@@ -14,16 +14,29 @@ let {
   serviceName
 } = thirdPartyConfigs
 
+/**
+ * when user click close auth button or
+ * user start auth process, hide auth button
+ */
 export function hideAuthBtn() {
   let dom = document.querySelector('.rc-auth-button-wrap')
   dom && dom.classList.add('rc-hide-to-side')
 }
 
+/**
+ * when user click contacts in ringcentral widgets or
+ * try to get third party contacts,
+ * need show auth button to user
+ */
 export function showAuthBtn() {
   let dom = document.querySelector('.rc-auth-button-wrap')
   dom && dom.classList.remove('rc-hide-to-side')
 }
 
+/**
+ * hanle user click auth button
+ * @param {*} e
+ */
 function handleAuthClick(e) {
   let {target} = e
   let {classList}= target
@@ -34,6 +47,9 @@ function handleAuthClick(e) {
   }
 }
 
+/**
+ * hide auth panel when auth end
+ */
 export function hideAuthPanel() {
   let frameWrap = document.getElementById('rc-auth-hs')
   frameWrap && frameWrap.classList.add('rc-hide-to-side')
@@ -54,6 +70,10 @@ export async function doAuth() {
   //await do other auth work()
 }
 
+/**
+ * notify ringcentral widgets about auth status
+ * @param {} authorized
+ */
 export function notifyRCAuthed(authorized = true) {
   window.rc.postMessage({
     type: 'rc-adapter-update-authorization-status',
@@ -61,6 +81,9 @@ export function notifyRCAuthed(authorized = true) {
   })
 }
 
+/**
+ * when user click unauth button from ringcentral widgets
+ */
 export async function unAuth() {
   await window.rc.updateToken(null)
   clearTimeout(tokenHandler)

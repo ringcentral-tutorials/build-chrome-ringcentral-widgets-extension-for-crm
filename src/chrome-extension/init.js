@@ -38,6 +38,7 @@ function registerService() {
 let registered = false
 
 export default () => {
+  // only when ringcentral widgets ready, start to init chrome extension logic
   window.addEventListener('message', function (e) {
     const data = e.data
     if (data && data.type === 'rc-adapter-pushAdapterState' && registered === false) {

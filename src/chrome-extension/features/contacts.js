@@ -33,6 +33,9 @@ function onClickContactPanel (e) {
   }
 }
 
+/**
+ * conatct info iframe loaded event
+ */
 function onloadIframe () {
   let dom = document
     .querySelector('.rc-contact-panel')
@@ -109,7 +112,10 @@ export function searchContacts(contacts = [], keyword) {
 }
 
 /**
- * get contact lists
+ * get contact lists function
+ * todo: this function need you find out how to do it
+ * you may check the CRM site to find the right api to do it
+ * or CRM site supply with special api for it
  */
 export const getContacts = _.debounce(async function getContacts() {
   if (!window.rc.rcLogined) {
@@ -124,7 +130,7 @@ export const getContacts = _.debounce(async function getContacts() {
     console.log('use cache')
     return cached
   }
-  // do get the conatcts list
+  // the final conatct result format
   let final = [{
     id: '123456', // id to identify third party contact
     name: 'TestService Name', // contact name
@@ -149,7 +155,8 @@ export function hideContactInfoPanel() {
 
 /**
  * show caller/callee info
- * todo: set right conatct url
+ * todo: you need find out right url for conact to show it when calling
+ * you may check the CRM site to find the right api to do it
  * @param {Object} call
  */
 export async function showContactInfoPanel(call) {
@@ -199,8 +206,8 @@ export async function showContactInfoPanel(call) {
           </span>
         </div>
       </div>
-      <div class="rc-insightly-contact-frame-box">
-        <iframe class="rc-insightly-contact-frame" sandbox="allow-same-origin allow-scripts allow-forms allow-popups" allow="microphone" src="${url}" id="rc-insightly-contact-frame">
+      <div class="rc-third-party-contact-frame-box">
+        <iframe class="rc-third-party-contact-frame" sandbox="allow-same-origin allow-scripts allow-forms allow-popups" allow="microphone" src="${url}" id="rc-third-party-contact-frame">
         </iframe>
       </div>
       <div class="rc-loading">loading...</div>

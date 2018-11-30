@@ -5,10 +5,10 @@
  * or hover some elemet show call button tooltip
  * or convert phone number text to click-to-call link
  * can be easily done
- * but it is not a required way to do extension, you can just write your own code, ignore this
+ * but it is not a required way to create extension, you can just write your own code, ignore this
  *
  * for realworld example, check:
- * https://github.com/zxdong262/insightly-embeddable-ringcentral-phone/blob/master/src/chrome-extension/config.js
+ * https://github.com/zxdong262/third-party-embeddable-ringcentral-phone/blob/master/src/chrome-extension/config.js
  * https://github.com/zxdong262/hubspot-embeddable-ringcentral-phone/blob/master/src/chrome-extension/config.js
  * https://github.com/zxdong262/redtail-embeddable-ringcentral-phone/blob/master/src/chrome-extension/config.js
  *
