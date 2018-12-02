@@ -11,10 +11,10 @@ style.
       padding: 0 0 0 15px;
   }
   #viewsaurus .saurus-prose {
-    width: 40%;
+    width: 50%;
   }
   #viewsaurus .saurus-code {
-    left: 40%;
+    left: 50%;
   }
 script.
   window.addEventListener('load', function() {
@@ -31,13 +31,47 @@ script.
 
       0. What does Chrome RingCentral widgets extension for CRM do?
       1. Learn how to setup, configure and get ready to development.
-      2. Walk-through the code that powers extension.
-      3. Take on challenges to add more feature to the extension.
+      2. Learn how to Add features to the extension
 
       When you are finished, you will be ready to create Chrome RingCentral widgets extension for CRMs.
 
   .step(data-title='What does Chrome RingCentral widgets extension for CRM do?', data-file='../README.md', data-highlight='17-48')
     :markdown
+      ## What does Chrome RingCentral widgets extension for CRM do?
+
+      In general, All the third party features of our [ringcentral-embeddable](https://github.com/ringcentral/ringcentral-embeddable) supported and some content insert:
+
+      - For CRM contact list, we will add a hover-to-show tooltip to show click-to-call button.
+
+      ![cc](https://github.com/zxdong262/ringcentral-embeddable-extension-factory/raw/master/screenshots/fac-2.png)
+
+      - For CRM contact info page, we will add a click-to-call button in proper position.
+
+      ![ ](https://github.com/zxdong262/ringcentral-embeddable-extension-factory/raw/master/screenshots/fac-3.png)
+
+      - For CRM contact phone number text, we make it click-to-call link.
+
+      ![ ](https://github.com/zxdong262/ringcentral-embeddable-extension-factory/raw/master/screenshots/fac-1.png)
+
+      - Sync CRM contacts to our widgets after user authorize.
+
+      ![ ](https://github.com/zxdong262/insightly-embeddable-ringcentral-phone/raw/master/screenshots/insightly-4.png)
+
+      - Sync call log to CRM automatically or manually.
+
+      ![ ](https://github.com/zxdong262/hubspot-embeddable-ringcentral-phone/raw/master/screenshots/hs6.png)
+
+      - Check CRM contact activities from our widgets.
+
+      ![ ](https://github.com/zxdong262/hubspot-embeddable-ringcentral-phone/raw/master/screenshots/hs7.png)
+
+      - Show CRM contact info panel when inbound/outbound call with CRM contact.
+
+      ![ ](https://github.com/zxdong262/hubspot-embeddable-ringcentral-phone/raw/master/screenshots/hubspot1.png)
+
+      ## Demo video(Insightly)
+
+      [https://youtu.be/Qfje5d5OdK0](https://youtu.be/Qfje5d5OdK0)
 
   .step(data-title='Prepare Your Environment', data-file='../README.md', data-highlight='34-62')
     :markdown
@@ -45,9 +79,7 @@ script.
 
       Need nodejs 8.10+/npm, recommend using [nvm](https://github.com/creationix/nvm) to install nodejs/npm.
 
-      ### Clone Repository
-
-      Next, let's create an extension project with [ringcentral-embeddable-extension-factory](https://github.com/zxdong262/ringcentral-embeddable-extension-factory):
+      Then let's create an extension project with [ringcentral-embeddable-extension-factory](https://github.com/zxdong262/ringcentral-embeddable-extension-factory):
 
       ```
       npx ringcentral-embeddable-extension-factory my-app
@@ -56,10 +88,6 @@ script.
       Looks like this:
 
       ![ ](https://github.com/zxdong262/ringcentral-embeddable-extension-factory/raw/master/screenshots/cli.png)
-
-      ```
-      git clone https://github.com/ringcentral-tutorials/ringcentral-ai-bot.git
-      ```
 
       Then, after the project folder is created, install the necessary prerequisites:
 
@@ -80,303 +108,26 @@ script.
       # now my-app/dist is ready for use as extension source
       ```
 
-  .step(data-title='Create Your Apps', data-file='../README.md', data-highlight='64-93')
+  .step(data-title='Load extension to Chrome', data-file='../README.md', data-highlight='86-89')
     :markdown
-      ## Create Your Apps
+      ## Now let's test the extension
 
-      Next, we need to login to [developers.ringcentral.com](https://developer.ringcentral.com) and create the two apps utilized by this framework to host a bot. Below you will be guided through the process of:
-      * Creating two apps, one for the bot, and the second for the web-based authorization flow for users to grant the bot access to their voicemail.
-      * Adding your bot to Glip.
+      1. Go to Chrome extensions page.
+      2. Open developer mode
+      3. Load `dist` as unpacked package.
+      4. Go to the CRM site to check
 
-      ### Create Your Bot App
-
-      The first app you will create is the Bot App. Create an app using the parameters and values below. Be careful during this process as some of these parameters cannot be edited once the app is created. 
-
-      * General Settings 
-        * Choose a name and description you prefer. 
-      * App Type and Platform
-        * **Application Type**: Public
-        * **Platform Type**: Server/Bot
-        * **Carrier**: *accept the default values*
-      * OAuth Settings
-        * **Permissions Needed**: All of them (ReadContacts, ReadMessages, ReadPresence, Contacts, ReadAccounts, SMS, InternalMessages, ReadCallLog, ReadCallRecording, WebhookSubscriptions, Glip)
-        * **OAuth Redirect URI**: Using your ngrok HTTPS URL from above, enter in the following value:
-          `https://1234abcd.ngrok.io/oauth-bot`
-
-      If you experience any trouble, or would like additional help with setting up the bot app, watch this [youtube video of detailed walk through](https://youtu.be/irmqUgKLwVw).
-
-      When you are done, you will be taken the app's dashboard. Make note of the app's Client ID and Client Secret as we will use those values when editing the config file later. 
-
-      ### Create Your Browser App
-
-      The second app is utilized by the framework to give end users the ability to authorize the bot to access their personal account data in RingCentral. Create an app using the parameters and values below:
-
-      * General Settings
-        * Choose a name and description you prefer. 
-      * App Type and Platform
-        * **Application Type**: Public
-        * **Platform Type:** Browser-based
-        * **Carrier**: *accept the default values*
-      * OAuth Settings
-        * **Permissions Needed**: All of them (ReadContacts, ReadMessages, ReadPresence, Contacts, ReadAccounts, SMS, InternalMessages, ReadCallLog, ReadCallRecording, WebhookSubscriptions, Glip)
-        * **OAuth Redirect URI**: Using your ngrok HTTPS URL from above, enter in the following value:
-          `https://1234abcd.ngrok.io/oauth-user`
-
-      If you experience any trouble, or would like additional help with setting up the user app, watch this [youtube video of detailed walk through](https://youtu.be/CgftrWkjduw).
-      
-      When you are done, you will be taken the app's dashboard. Make note of the app's Client ID and Client Secret as we will use those values when editing the config file later. 
-
-  .step(data-title='Start Your Server', data-file='../README.md', data-highlight='105-111')
+  .step(data-title='Add features to extension', data-file='../README.md', data-highlight='91-100')
     :markdown
-      ## Start Your Server
+      ## Add features to extension
 
-      ### Edit Your Config File
+      You can see that without any coding, currently we just add the [ringcentral-embeddable](https://github.com/ringcentral/ringcentral-embeddable) Phone widgets, you call with it, but it is not interactive with CRM site yet, All those features listed need your coding efforts to make it work.
 
-      With your apps created, we complete the setup process by editing your config parameters and then start the servers. Begin by creating and editing your config file. Open another terminal window, and run the following commands:
+      To make it easier, we already set common modules to reduce developer efforts, you could set proper selectors, methods to make all features to work:
 
-      ```
-      cd ringcentral-ai-bot
-      cp .sample.env .env
-      ```
-
-      Edit the `.env` you just created, and set the following parameters according the values you made note of above:
-
-      * `RINGCENTRAL_BOT_CLIENT_ID`
-      * `RINGCENTRAL_BOT_CLIENT_SECRET`
-      * `RINGCENTRAL_USER_CLIENT_ID`
-      * `RINGCENTRAL_USER_CLIENT_SECRET`
-      * `GOOGLE_APPLICATION_CREDENTIALS`
-
-      For the Google credentials, enter in the path to the `google_cloud.json` file you downloaded and saved earlier, or leave empty, then bot will use fake demo data to demo the process.
-
-      ### Start the Server
-
-      We are almost done. Next, start your bot and web server by running the following command:
-
-      ```
-      yarn dev
-      ```
-
-      ### Add the Bot to Glip
-
-      As the last step, we need to add your bot as a user in the Glip messaging interface. 
-
-      1. Login to developers.ringcentral.com
-      2. Click the Apps tab, and then click your bot app
-      3. From the App dashboard, select the "Bot" tab
-      4. Under General Settings, select "Add to Glip"
-
-      Clicking "Add to Glip" will initiate the authorization flow between Glip and your bot. If successful, the "Add to Glip" button will change to a "Remove" button. If you experience trouble with this step, consult the server's console log, and your ngrok proxy (load [http://localhost:4040](http://localhost:4040) in your browser) for details that will help you troubleshoot the issue. 
-
-  .step(data-title='Test Your Bot', data-file='../README.md', data-highlight='113-116')
-    :markdown
-      ## Test Your Bot
-      
-      Everything should now be setup properly. To speak to your bot, login to [https://glip-app.devtest.ringcentral.com](https://glip-app.devtest.ringcentral.com), and click the bot's name from People list to open up a conversation with the bot. 
-
-      After that, just follow the bot's prompts and have fun. If everything is working properly the chat will look something like this:
-
-      ![chat content screeshot](https://user-images.githubusercontent.com/1641949/48107596-34d48d80-e27b-11e8-8150-48b1fcf912c6.png)
-
-  .step(data-title='Code Walk-through', data-file='../src/lambda/lib/bot-oauth.js')
-    :markdown
-      ## Code Walk-through
-
-      Now that you have the bot working properly, let's take a brief tour of the various components of the bot framework that powers it. In this section you will take a closer look at:
-      * Bot Authentication
-      * Subscribing to Bot Events
-      * Responding to Bot Webhooks
-      * Posting a Bot Message
-      * User Authorization of the Bot
-      * Subscribing to Voicemail Events
-      * Responding to User Webhooks
-      * Processing Incoming Voicemails
-
-  .step(data-title='Bot Authentication', data-file='../src/lambda/lib/bot-oauth.js', data-highlight='10-13')
-    :markdown
-      ## Bot Authentication
-
-      When a developer clicks the "Add to Glip" button, this triggers RingCentral to transmit to the bot via it's OAuth Redirect URI the access token it will need when making API calls to RingCentral. You can monitor this exchange by opening up your [ngrok web-based console](http://localhost:4040). The framework handles the standard OAuth flow for you. Let's take a closer look. 
-
-      The request is routed to `bot-oauth.js` where the bot it instantiated and the temporary auth token is passed into the `authorize()` method. The `authorize()` method then passes the auth token back to RingCentral to obtain a permanent access token for the bot. This access token is then saved locally so that it is persisted between server restarts.
-
-      If the developer clicks the "Remove Bot" button, the access token is invalidated. If the developer clicks "Add to Glip" again, an entirely new access token is granted. 
-
-      Whenever a new access token is provisioned to the bot, we must call `bot.renewWebhooks()` to resubscribe to the bot events that power our bot. 
-
-      We will use the code(`event.queryStringParameters.code`) provided by the request to do authorize, and store the fetched accessToken/user id etc to database. Those events are:
-
-      * When a user adds the bot to a chat group
-      * When a message is posted in chat group
-
-      We will dive into how we subscribe to these events next. 
-
-  .step(data-title='Subscribing to Bot Events', data-file='../src/lambda/lib/store.js', data-highlight='95-120')
-    :markdown
-      ## Subscribing to Bot Events
-
-      When you subscribe to an event, you need to provide RingCentral with the following:
-
-      1. The list of events to subscribe to
-      2. How to deliver the event, e.g. the URL to post the event to
-      3. How long the subscription will last
-
-      Subscriptions are bound to the access token that created them. Since a bot's access token never expires, it stands to reason that your subscriptions should never expire as well. That is why we set `expiresIn` to such a large value. 
-
-      We instruct RingCentral to notify us of events via a "webhook" and to post the webhook to a URL we specify. 
-
-      You specify the events you want to subscribe to through an array of event names or "filters."
-
-      ```js
-      const botEventFilters = () => [
-        '/restapi/v1.0/glip/posts',
-        '/restapi/v1.0/glip/groups'
-      ]
-      ```
-
-      If an error occurs subscribing to the event, the bot framework will attempt to resubscribe again in one minute. 
-
-      Next we will show how to receive an event notification and respond to it. 
-
-  .step(data-title='Responding to Bot Webhooks', data-file='../src/lambda/lib/bot-webhook.js', data-highlight='31-51')
-    :markdown
-      ## Responding to Bot Webhooks
-
-      With the subscription setup, now our server will receive an HTTP POST whenever a user performs the following actions:
-
-      * A user adds the bot to a chat group
-      * A message is posted in the chat group
-
-      The event is routed to `bot-webhook.js` for processing. A `switch` statement is used to identify the type of event received, and then to determine on a case-by-case basis what is the proper response to send back to the user. 
-
-      Next we will show how to post a message back to the user. 
-
-  .step(data-title='Posting a Bot Message', data-file='../src/lambda/lib/store.js', data-highlight='146-152')
-    :markdown
-      ## Posting a Bot Message
-
-      Your bot could be interacting with any number of user simultaneously, so we need a way to identify the specific user to direct messages to. This is done through the `groupId` which identifies the specific conversation taking place between a user and the bot. We will therefore POST our response to the following URL:
-
-      `/restapi/v1.0/glip/groups/{groupId}/posts`
-
-      The framework will handle for you authorization, which is done by setting the HTTP Authorization header properly to "Bearer" plus the access token value. 
-
-      More information on the API is available here:
-
-      * [Create Post API](https://developer.ringcentral.com/api-reference#Posts-createGlipGroupPost)
-
-      This bot requires a user to grant the bot permission to access their voicemail. Next, we will review how this authorization flow is enabled. 
-
-  .step(data-title='User Authorization of the Bot (Step 1)', data-file='../src/lambda/lib/store.js', data-highlight='194-199')
-    :markdown
-      ## User Authorization of the Bot (step 1)
-
-      When we clicked "Add bot to Glip" we gave the bot permission to access our Glip organization and be notified of messages posted to it. But to fully-enable this use case, the bot need to ask each individual user to speaks with permission to access their personal voice mails. This is done by a distinct OAuth authorization flow handled by the bot framework. 
-
-      To do that, we prompt the user via a bot message to visit a URL to grant the bot the permission it needs. The code to the right helps us construct this URL.
-
-      Next, we will send it to the user when necessary. 
-
-  .step(data-title='User Authorization of the Bot (step 2)', data-file='../src/lambda/lib/user-oauth.js', data-highlight='9-21')
-    :markdown
-      ## User Authorization of the Bot (step 2)
-
-      When the user clicks the authorization URL, they will be directed to their web browser where they can authorize the bot through a stand OAuth flow. 
-
-      Similar to bot authorization process, RingCentral posts to us a temporary auth token which we exchange for a permanent access token, which we then store locally. This token can subsequently be used to subscribe to voicemail events and access the user's account on their behalf. 
-
-      Next, we will subscribe to voicemail events. 
-
-  .step(data-title='Subscribing to Voicemail Events', data-file='../src/lambda/lib/store.js', data-highlight='253-266')
-    :markdown
-      ## Subscribing to Voicemail Events
-
-      The process and API for subscribing to Voicemail events is the same as subscription to Glip events. 
-
-      We will subscribe to these event filters:
-
-      ```
-      [
-        '/restapi/v1.0/account/~/extension/~/message-store',
-        '/restapi/v1.0/subscription/~?threshold=59&interval=15'
-      ]
-      ```
-
-      - The `message-store` event will be triggered when a new voicemail is received.
-      - The `/restapi/v1.0/subscription/~?threshold=59&interval=15` event will be triggered whenever the `message-store` event is about to expire. This ensures that as long as the bot is running, we will continually renew our subscription to voicemail events. In the event that the bot server is taken down, then the subscription will be permitted to expire gracefully.
-
-      Learn more about [reminder hooks](https://github.com/ringcentral/ringcentral-api-docs/blob/master/docs/notifications_webhooks.md) from RingCentral's github repository. 
-
-      Next, we will see how to respond to a voicemail event. 
-
-  .step(data-title='Responding to User Webhooks', data-file='../src/lambda/lib/user-webhook.js', data-highlight='10-47')
-    :markdown
-      ## Responding to User Webhooks
-
-      Voicemail events are processed in a similar fashion to Glip events. Events received by the framework are routed to `user-webhook.js`. Here we identify the event received and handle each one accordingly. You can see for example how we distinctly handle two different events we have subscribed to:
-
-      * subscription expiration
-      * new voicemail received
-
-      As you work to expand the capabilities of your bot, this is how you might handle other events emitted by RingCentral. 
-
-      Next, we will process the voicemail. 
-
- .step(data-title='Processing Incoming Voicemails', data-file='../src/lambda/lib/voicemail-process.js', data-highlight='37-62')
-    :markdown
-      ## Processing Incoming Voicemails
-
-      To process an incoming voicemail, we interface with a 3rd party service: Google's voice transcription and Google's cloud AI(Cloud Natural Language API).
-
-      When you receive the new voicemail event, process the voicemail by transcribing it to text and then analyzing the text. To help keep our code clean and modular, we place the code that interfaces with this external service in a [separate module](https://github.com/zxdong262/audio-analysis-service).
-
-      You may have noticed that by default we utilize fake voicemail data to handle the case where the developer next configured their `GOOGLE_APPLICATION_CREDENTIALS` in their `.env` file. Otherwise, the voicemail is processed using through the library/module above, and the results output to the user via a Glip message.
-
-      That is the whole process, from start to finish. With this knowledge, we invite you to challenge yourself by adding additional functionality to your bot. 
-
- .step(data-title='Test Your Knowledge', data-file='../src/lambda/lib/bot-webhook.js', data-highlight='63-75')
-    :markdown
-      ## Test Your Knowledge
-
-      This bot framework was designed to help solve many of the mundane tasks associated with developing a full-featured bot so that developers can more quickly and easily focus their efforts on the parts of bot building that bring real value to the bot's users. With some familiarity with this framework, we invite you to take on the following challenges:
-
-      * Add support for the "unmonitor" command so that bot users can tell the bot to stop monitoring their voicemail. 
-      * Inform the user via a message about how many voicemail messages they have. 
-      * Customize the response sent to the user when a new voicemail is received. 
-      * Add a custom command of your design and choosing. 
-
- .step(data-title='Support the "unmonitor" command', data-file='../src/lambda/lib/bot-webhook.js', data-highlight='64-83')
-    :markdown
-      ## Support the "unmonitor" command
-
-      We left the "unmonitor" command unimplemented. All you have to do is ncomment line s74-82 and comment out lines 68-72, and restart your server.
-
-      Ask yourself, what are the two states we must account for when processing an unmonitor command?
-
- .step(data-title='Show the number of new voicemails received', data-file='../src/lambda/lib/user-webhook.js', data-highlight='24-40')
-    :markdown
-      ## Show the number of new voicemails received
-
-      Some people may find the transcription posted by the bot to be cumbersome. So let's simplify the response by simply notifying the user they received a new voicemail, and by telling them how many voicemails they have waiting.
-
-      Do that by commenting out lines 26-28, and uncommenting lines 31-40.
-
- .step(data-title='Customize the voicemail response', data-file='../src/lambda/lib/user-webhook.js', data-highlight='24-40')
-    :markdown
-      ## Customize the voicemail response
-
-      Are you getting the hang of this yet? 
-
-      Now, customize the voicemail response with a message of your choosing. Ask yourself, "what information would the users of my bot find most useful about the voicemail?" And challenge yourself with including that in the response you author. 
-
-      Replace lines 26-28, write you own process function, and send some custom response about new voicemail.
-
- .step(data-title='Add a custom command', data-file='../src/lambda/lib/bot-webhook.js', data-highlight='101-101')
-    :markdown
-      ## Add a custom command
-
-      As your final challenge, implement an entirely new bot command. This can relate to voicemails or not. Be creative and have fun.
-
-      If you are looking for a suggestion, one command the bot is missing is a help command. Try that first before writing your own.
+      - Edit [src/chrome-extension/config.js](src/chrome-extension/config.js) to make click-to-call related features to work
+      - Follow the guide in [src/chrome-extension/features/third-party-api.js](src/chrome-extension/features/third-party-api.js) to make all third party features to work.
+      - Further more you can edit [dist/manifest.json](dist/manifest.json) and [dist/background.js](dist/background.js) to do more customization work.
+      - And you can always read [Realworld code examples](https://github.com/ringcentral-tutorials/build-chrome-ringcentral-widgets-extension-for-crm#realworld-code-examples) to get some hint about how to do it.
 
 

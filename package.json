@@ -4,8 +4,6 @@
   "description": "RingCentral Embeddable Voice with chrome extension for CRM sites",
   "main": "index.js",
   "scripts": {
-    "build": "./node_modules/.bin/cross-env NODE_ENV=production ./node_modules/.bin/webpack --progress -w",
-    "start": "npm run build",
     "postinstall": "node bin/post-install",
     "docs": "cd docs && npx saurus author",
     "lint": "./node_modules/.bin/eslint --max-warnings 0 --ext .js  src"
