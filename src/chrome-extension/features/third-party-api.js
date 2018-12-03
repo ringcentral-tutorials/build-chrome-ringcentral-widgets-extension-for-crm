@@ -1,11 +1,12 @@
 /**
  * third party api
  * you can do things like:
- * 1. sync thirdparty contacts to ringcentral contact list
- * 2. when calling or call inbound, show caller/callee info panel
+ * 1. sync third party contacts to ringcentral widgets contact list
+ * 2. when call outbound or call inbound, show caller/callee info panel
  * 3. sync call log to third party system
  *
  * document about third party features: https://github.com/ringcentral/ringcentral-embeddable/blob/master/docs/third-party-service-in-widget.md
+ *
  * finish all todos in
  *
  * src/chrome-extension/features/activities.js
@@ -13,7 +14,7 @@
  * src/chrome-extension/features/call-log-sync.js
  * src/chrome-extension/features/contacts.js
  * to make all third party feature work
- * 
+ *
  */
 
 import {thirdPartyConfigs} from '../common/app-config'
@@ -76,8 +77,6 @@ window.rc = {
 let {
   serviceName
 } = thirdPartyConfigs
-
-let authEventInited = false
 
 /**
  * handle ringcentral widgets contacts list events
@@ -203,10 +202,6 @@ async function handleRCEvents(e) {
 
 
 export default async function initThirdPartyApi () {
-  if (authEventInited) {
-    return
-  }
-  authEventInited = true
 
   //register service to rc-widgets
 
@@ -214,26 +209,36 @@ export default async function initThirdPartyApi () {
     type: 'rc-adapter-register-third-party-service',
     service: {
       name: serviceName,
+
+      // show contacts in ringcentral widgets
       contactsPath: '/contacts',
       contactSearchPath: '/contacts/search',
       contactMatchPath: '/contacts/match',
+
+      // show auth/auauth button in ringcentral widgets
       authorizationPath: '/authorize',
       authorizedTitle: 'Unauthorize',
       unauthorizedTitle: 'Authorize',
+      authorized: false,
+
+      // Enable call log sync feature
       callLoggerPath: '/callLogger',
       callLoggerTitle: `Log to ${serviceName}`,
+
+      // show contact activities in ringcentral widgets
       activitiesPath: '/activities',
-      activityPath: '/activity',
-      authorized: false
+      activityPath: '/activity'
+
     }
   })
 
-  //hanlde contacts events
+  // init
   let userId = getUserId()
   window.rc.currentUserId = userId
   window.rc.cacheKey = 'contacts' + '_' + userId,
   window.addEventListener('message', handleRCEvents)
-  //hanlde contacts events
+
+  // try to get api key from chrome storage
   let apiKey = await ls.get(lsKeys.apiKeyLSKey) || null
   window.rc.local = {
     apiKey

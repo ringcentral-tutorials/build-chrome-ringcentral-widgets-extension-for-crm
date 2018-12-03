@@ -32,7 +32,7 @@ export function notifySyncSuccess({
   let msg = `
     <div>
       <div class="rc-pd1b">
-        Call log synced to insightly!
+        Call log synced to ${serviceName}!
       </div>
       <div class="rc-pd1b">
         <a href="${url}" target="_blank">
@@ -75,14 +75,20 @@ export async function syncCallLogToThirdParty(body) {
   }
 }
 
+/**
+ * sync call log action
+ * todo: need you find out how to do the sync
+ * you may check the CRM site to find the right api to do it
+ * @param {*} body
+ * @param {*} formData 
+ */
 async function doSync(body, formData) {
-  //todo real sync api
   console.log(body, formData)
   let success = true
   if (success) {
     notifySyncSuccess({id: ''})
   } else {
-    notify('call log sync to insightly failed', 'warn')
+    notify('call log sync to third party failed', 'warn')
     console.log('post /Metadata/Create error')
     console.log('some error')
   }

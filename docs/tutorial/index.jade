@@ -1,0 +1,133 @@
+style.
+  #viewsaurus .saurus-prose ul {
+    list-style-type: disc;
+    list-style-position: inside;
+  }
+  #viewsaurus .saurus-prose ol { 
+    list-style-type: decimal;
+    list-style-position: inside;
+  }
+  #viewsaurus menu, #viewsaurus ol, #viewsaurus ul {
+      padding: 0 0 0 15px;
+  }
+  #viewsaurus .saurus-prose {
+    width: 50%;
+  }
+  #viewsaurus .saurus-code {
+    left: 50%;
+  }
+script.
+  window.addEventListener('load', function() {
+    document.querySelectorAll('.saurus-content a').forEach(function(dom) {
+      dom.setAttribute('target', '_blank')
+    })
+  })
+.chapter(data-title='Build Chrome RingCentral widgets extension for CRM')
+  .step(data-title='Overview', data-file='../README.md', data-highlight='1-16')
+    :markdown
+      ## Overview
+
+      In this guided tutorial you will learn how to create Chrome RingCentral widgets extension for CRM. The guide is broken up into four sections:
+
+      0. What does Chrome RingCentral widgets extension for CRM do?
+      1. Learn how to setup, configure and get ready to development.
+      2. Learn how to Add features to the extension
+
+      When you are finished, you will be ready to create Chrome RingCentral widgets extension for CRMs.
+
+  .step(data-title='What does Chrome RingCentral widgets extension for CRM do?', data-file='../README.md', data-highlight='17-48')
+    :markdown
+      ## What does Chrome RingCentral widgets extension for CRM do?
+
+      In general, All the third party features of our [ringcentral-embeddable](https://github.com/ringcentral/ringcentral-embeddable) supported and some content insert:
+
+      - For CRM contact list, we will add a hover-to-show tooltip to show click-to-call button.
+
+      ![cc](https://github.com/zxdong262/ringcentral-embeddable-extension-factory/raw/master/screenshots/fac-2.png)
+
+      - For CRM contact info page, we will add a click-to-call button in proper position.
+
+      ![ ](https://github.com/zxdong262/ringcentral-embeddable-extension-factory/raw/master/screenshots/fac-3.png)
+
+      - For CRM contact phone number text, we make it click-to-call link.
+
+      ![ ](https://github.com/zxdong262/ringcentral-embeddable-extension-factory/raw/master/screenshots/fac-1.png)
+
+      - Sync CRM contacts to our widgets after user authorize.
+
+      ![ ](https://github.com/zxdong262/insightly-embeddable-ringcentral-phone/raw/master/screenshots/insightly-4.png)
+
+      - Sync call log to CRM automatically or manually.
+
+      ![ ](https://github.com/zxdong262/hubspot-embeddable-ringcentral-phone/raw/master/screenshots/hs6.png)
+
+      - Check CRM contact activities from our widgets.
+
+      ![ ](https://github.com/zxdong262/hubspot-embeddable-ringcentral-phone/raw/master/screenshots/hs7.png)
+
+      - Show CRM contact info panel when inbound/outbound call with CRM contact.
+
+      ![ ](https://github.com/zxdong262/hubspot-embeddable-ringcentral-phone/raw/master/screenshots/hubspot1.png)
+
+      ## Demo video(Insightly)
+
+      [https://youtu.be/Qfje5d5OdK0](https://youtu.be/Qfje5d5OdK0)
+
+  .step(data-title='Prepare Your Environment', data-file='../README.md', data-highlight='34-62')
+    :markdown
+      ## Prepare Your Environment
+
+      Need nodejs 8.10+/npm, recommend using [nvm](https://github.com/creationix/nvm) to install nodejs/npm.
+
+      Then let's create an extension project with [ringcentral-embeddable-extension-factory](https://github.com/zxdong262/ringcentral-embeddable-extension-factory):
+
+      ```
+      npx ringcentral-embeddable-extension-factory my-app
+      ```
+
+      Looks like this:
+
+      ![ ](https://github.com/zxdong262/ringcentral-embeddable-extension-factory/raw/master/screenshots/cli.png)
+
+      Then, after the project folder is created, install the necessary prerequisites:
+
+      ```
+      cd my-app
+
+      # install dependencies
+      npm i
+
+      # create local config file
+      cp config.sample.js config.js
+
+      # edit config.js, set proper `thirdPartyConfigs.serviceName`
+
+      # let's build the extension
+      npm start
+
+      # now my-app/dist is ready for use as extension source
+      ```
+
+  .step(data-title='Load extension to Chrome', data-file='../README.md', data-highlight='86-89')
+    :markdown
+      ## Now let's test the extension
+
+      1. Go to Chrome extensions page.
+      2. Open developer mode
+      3. Load `dist` as unpacked package.
+      4. Go to the CRM site to check
+
+  .step(data-title='Add features to extension', data-file='../README.md', data-highlight='91-100')
+    :markdown
+      ## Add features to extension
+
+      You can see that without any coding, currently we just add the [ringcentral-embeddable](https://github.com/ringcentral/ringcentral-embeddable) Phone widgets, you call with it, but it is not interactive with CRM site yet, All those features listed need your coding efforts to make it work.
+
+      To make it easier, we already set common modules to reduce developer efforts, you could set proper selectors, methods to make all features to work:
+
+      - Edit [src/chrome-extension/config.js](src/chrome-extension/config.js) to make click-to-call related features to work
+      - Follow the guide in [src/chrome-extension/features/third-party-api.js](src/chrome-extension/features/third-party-api.js) to make all third party features to work.
+      - Further more you can edit [dist/manifest.json](dist/manifest.json) and [dist/background.js](dist/background.js) to do more customization work.
+      - And you can always read [Realworld code examples](https://github.com/ringcentral-tutorials/build-chrome-ringcentral-widgets-extension-for-crm#realworld-code-examples) to get some hint about how to do it.
+
+
