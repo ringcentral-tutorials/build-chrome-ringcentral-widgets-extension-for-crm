@@ -83,6 +83,8 @@ script.
 
       ```
       npx ringcentral-embeddable-extension-factory my-app
+
+      # make sure you set `https://*.insightly.com/*` as url, we will use insightly as target CRM site.
       ```
 
       Looks like this:
@@ -231,18 +233,16 @@ script.
 
   .step(data-title='Try it yourself: Add hover-to-show tooltip to show click-to-call button', data-file='../README.md', data-highlight='91-100')
     :markdown
-
       ## Try it yourself: Add hover-to-show tooltip to show click-to-call button
 
       If you get a sense of how the config works, now it is time to try it yourself.
 
       Edit `src/chrome-extension/config.js` `hoverShowClickToCallButton` function to make this feature work.
 
-      Think about your solution and compare with [https://github.com/zxdong262/insightly-embeddable-ringcentral-phone/blob/master/src/chrome-extension/config.js](https://github.com/zxdong262/insightly-embeddable-ringcentral-phone/blob/master/src/chrome-extension/config.js)
+      Think about your solution and compare with https://github.com/zxdong262/insightly-embeddable-ringcentral-phone/blob/master/src/chrome-extension/config.js
 
   .step(data-title='Try it yourself: Add third party features', data-file='../README.md', data-highlight='91-100')
     :markdown
-
       ## Try it yourself: Add third party features
 
       After the warn up, now it is time to try the third party features.
@@ -252,3 +252,17 @@ script.
       Then follow `src/chrome-extension/features/third-party-api.js`'s instruction to finish all the todos.
 
       Think about your solution and compare with [https://github.com/zxdong262/insightly-embeddable-ringcentral-phone/tree/master/src](https://github.com/zxdong262/insightly-embeddable-ringcentral-phone/tree/master/src)
+
+  .step(data-title='Try it yourself: Addtional settings', data-file='../README.md', data-highlight='91-100')
+    :markdown
+      ## Try it yourself: Addtional settings
+
+      Further more you can edit [dist/manifest.json](dist/manifest.json) and [dist/background.js](dist/background.js) to do more customization work, such as filtered urls you do not want to show widgets etc.
+
+      Read source code to check the code in real world:
+
+      - https://github.com/zxdong262/insightly-embeddable-ringcentral-phone/blob/master/dist/manifest.json
+      - https://github.com/zxdong262/insightly-embeddable-ringcentral-phone/blob/master/dist/background.js
+
+      That is all, thanks for reading!
+
