@@ -19,17 +19,17 @@ This tutorial will show you how to build Chrome RingCentral widgets extension fo
 
 In general, All the third party features of our [ringcentral-embeddable](https://github.com/ringcentral/ringcentral-embeddable) supported and some content insert:
 
-- For CRM contact list, we will add a hover-to-show tooltip to show click-to-call button.
+- For CRM contact phone number text, we make it click-to-call link.
 
-![cc](https://github.com/zxdong262/ringcentral-embeddable-extension-factory/raw/master/screenshots/fac-2.png)
+![ ](https://github.com/zxdong262/ringcentral-embeddable-extension-factory/raw/master/screenshots/fac-1.png)
 
 - For CRM contact info page, we will add a click-to-call button in proper position.
 
 ![ ](https://github.com/zxdong262/ringcentral-embeddable-extension-factory/raw/master/screenshots/fac-3.png)
 
-- For CRM contact phone number text, we make it click-to-call link.
+- For CRM contact list, we will add a hover-to-show tooltip to show click-to-call button.
 
-![ ](https://github.com/zxdong262/ringcentral-embeddable-extension-factory/raw/master/screenshots/fac-1.png)
+![cc](https://github.com/zxdong262/ringcentral-embeddable-extension-factory/raw/master/screenshots/fac-2.png)
 
 - Sync CRM contacts to our widgets after user authorize.
 
