@@ -8,6 +8,7 @@ This tutorial will show you how to build Chrome RingCentral widgets extension fo
 - [Demo video(Insightly)](#demo-videoinsightly)
 - [Screenshots(Insightly and Hubspot)](#screenshotsinsightly-and-hubspot)
 - [Realworld code examples](#realworld-code-examples)
+- [Create project with ringcentral-embeddable-extension-factory](#create-project-with-ringcentral-embeddable-extension-factory)
 - [Build and Use](#build-and-use)
 - [Make the features works](#make-the-features-works)
 - [Build with custom RingCentral clientID/appServer](#build-with-custom-ringcentral-clientidappserver)
@@ -63,6 +64,20 @@ In general, All the third party features of our [ringcentral-embeddable](https:/
 
 - [insightly-embeddable-ringcentral-phone](https://github.com/zxdong262/insightly-embeddable-ringcentral-phone)
 - [hubspot-embeddable-ringcentral-phone](https://github.com/zxdong262/hubspot-embeddable-ringcentral-phone)
+
+## Create project with ringcentral-embeddable-extension-factory
+
+Need nodejs 8.10+/npm, recommend using [nvm](https://github.com/creationix/nvm) to install nodejs/npm.
+
+Then let's create an extension project with [ringcentral-embeddable-extension-factory](https://github.com/zxdong262/ringcentral-embeddable-extension-factory):
+
+```bash
+npx ringcentral-embeddable-extension-factory my-app
+```
+
+Looks like this:
+
+![ ](https://github.com/zxdong262/ringcentral-embeddable-extension-factory/raw/master/screenshots/cli.png)
 
 ## Build and Use
 
