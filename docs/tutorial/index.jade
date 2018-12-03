@@ -41,6 +41,10 @@ script.
 
       In general, All the third party features of our [ringcentral-embeddable](https://github.com/ringcentral/ringcentral-embeddable) supported and some content insert:
 
+      - For CRM contact phone number text, we make it click-to-call link.
+
+      ![ ](https://github.com/zxdong262/ringcentral-embeddable-extension-factory/raw/master/screenshots/fac-1.png)
+
       - For CRM contact list, we will add a hover-to-show tooltip to show click-to-call button.
 
       ![cc](https://github.com/zxdong262/ringcentral-embeddable-extension-factory/raw/master/screenshots/fac-2.png)
@@ -48,10 +52,6 @@ script.
       - For CRM contact info page, we will add a click-to-call button in proper position.
 
       ![ ](https://github.com/zxdong262/ringcentral-embeddable-extension-factory/raw/master/screenshots/fac-3.png)
-
-      - For CRM contact phone number text, we make it click-to-call link.
-
-      ![ ](https://github.com/zxdong262/ringcentral-embeddable-extension-factory/raw/master/screenshots/fac-1.png)
 
       - Sync CRM contacts to our widgets after user authorize.
 
@@ -73,7 +73,7 @@ script.
 
       [https://youtu.be/Qfje5d5OdK0](https://youtu.be/Qfje5d5OdK0)
 
-  .step(data-title='Prepare Your Environment', data-file='../README.md', data-highlight='34-62')
+  .step(data-title='Prepare Your Environment', data-file='../README.md', data-highlight='68-99')
     :markdown
       ## Prepare Your Environment
 
@@ -130,4 +130,125 @@ script.
       - Further more you can edit [dist/manifest.json](dist/manifest.json) and [dist/background.js](dist/background.js) to do more customization work.
       - And you can always read [Realworld code examples](https://github.com/ringcentral-tutorials/build-chrome-ringcentral-widgets-extension-for-crm#realworld-code-examples) to get some hint about how to do it.
 
+      In the following chaptors, we will learn how exactly to make it work. This tutorial will take `insightly.com` as example, before continuing, please create an account in `insightly.com`, it is free. And we already build the insightly extension already, you can check the [source code](https://github.com/zxdong262/insightly-embeddable-ringcentral-phone).
 
+  .step(data-title='Convert phone number text to click-to-call link', data-file='../README.md', data-highlight='91-100')
+    :markdown
+      ## Convert phone number text to click-to-call link
+
+      ![ ](https://github.com/zxdong262/ringcentral-embeddable-extension-factory/raw/master/screenshots/fac-1.png)
+
+      It is pretty simple, we just need to find proper css selector.
+
+      ![ ](https://github.com/zxdong262/ringcentral-embeddable-extension-factory/raw/master/screenshots/txt-to-link.png)
+
+      And edit `src/chrome-extension/config.js` `phoneNumberSelectors` to be like this:
+
+      ```js
+        // modify phone number text to click-to-call link
+        export const phoneNumberSelectors = [
+          ///* example config
+          {
+            urlCheck: (href) => {
+              return href.includes('?blade=/details/contact')
+            },
+            selector: '#modal-details-body .metadata-span-phone'
+          }
+          //*/
+        ]
+      ```
+
+      Then refresh extension in Chrome extension page, check in insightly contact detail page.
+
+
+  .step(data-title='Add a click-to-call button in contact info page', data-file='../README.md', data-highlight='91-100')
+    :markdown
+      ## Add a click-to-call button in contact info page
+
+      ![ ](https://github.com/zxdong262/ringcentral-embeddable-extension-factory/raw/master/screenshots/fac-2.png)
+
+      And edit `src/chrome-extension/config.js` `insertClickToCallButton` to be like this:
+
+      As you can see, insightly contact page just have all phhone number info in dom,
+      so we can just extract them from dom
+      ```js
+
+        import {
+          RCBTNCLS2
+        } from './common/helpers'
+
+        export const insertClickToCallButton = [
+          {
+            // must match page url
+            urlCheck: href => {
+              return href.includes('?blade=/details/contact')
+            },
+
+            // define in the page how to get phone number,
+            // if can not get phone number, will not insert the call button
+            getContactPhoneNumbers: () => {
+              let phones = document.querySelectorAll('.contact [data-display-type="PHONE"]')
+              return Array.from(phones)
+                .reduce((prev, node) => {
+                  let titleWrap = node.querySelector('.metadata-row-title')
+                  let title = titleWrap
+                    ? titleWrap.textContent.trim()
+                    : 'Phone Number'
+                  let numberWrap = node.querySelector('.metadata-row-viewer-phone')
+                  let number = numberWrap
+                    ? numberWrap.textContent.trim()
+                    : ''
+                  if (number) {
+                    prev.push({
+                      id: title,
+                      title,
+                      number
+                    })
+                  }
+                  return prev
+                }, [])
+            },
+
+            // parent dom to insert call button
+            // can be multiple condition
+            // the first one matches, rest the array will be ignored
+            parentsToInsertButton: [
+              {
+                getElem: () => {
+                  return document.querySelector('#modal-details-body header .btn-toolbar')
+                },
+                insertMethod: 'insertBefore',
+                shouldInsert: () => {
+                  return !document.querySelector('#modal-details-body header .btn-toolbar .' + RCBTNCLS2)
+                }
+              }
+            ]
+          }
+        ]
+      ```
+
+      Then refresh extension in Chrome extension page, check in insightly contact detail page.
+
+  .step(data-title='Try it yourself: Add hover-to-show tooltip to show click-to-call button', data-file='../README.md', data-highlight='91-100')
+    :markdown
+
+      ## Try it yourself: Add hover-to-show tooltip to show click-to-call button
+
+      If you get a sense of how the config works, now it is time to try it yourself.
+
+      Edit `src/chrome-extension/config.js` `hoverShowClickToCallButton` function to make this feature work.
+
+      Think about your solution and compare with [https://github.com/zxdong262/insightly-embeddable-ringcentral-phone/blob/master/src/chrome-extension/config.js](https://github.com/zxdong262/insightly-embeddable-ringcentral-phone/blob/master/src/chrome-extension/config.js)
+
+  .step(data-title='Try it yourself: Add third party features', data-file='../README.md', data-highlight='91-100')
+    :markdown
+
+      ## Try it yourself: Add third party features
+
+      After the warn up, now it is time to try the third party features.
+
+      Read our [third party document](https://github.com/ringcentral/ringcentral-embeddable/blob/master/docs/third-party-service-in-widget.md) first.
+
+      Then follow `src/chrome-extension/features/third-party-api.js`'s instruction to finish all the todos.
+
+      Think about your solution and compare with [https://github.com/zxdong262/insightly-embeddable-ringcentral-phone/tree/master/src](https://github.com/zxdong262/insightly-embeddable-ringcentral-phone/tree/master/src)
