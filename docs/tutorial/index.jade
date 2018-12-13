@@ -27,31 +27,33 @@ script.
     :markdown
       ## Overview
 
-      In this guided tutorial you will learn how to create Chrome RingCentral widgets extension for CRM. The guide is broken up into four sections:
+      In this guided tutorial you will learn how to create Chrome RingCentral widgets extension for CRM. The guide is broken up into three sections:
 
       0. What does Chrome RingCentral widgets extension for CRM do?
       1. Learn how to setup, configure and get ready to development.
-      2. Learn how to Add features to the extension
+      2. Learn how to Add advanced features to the extension
 
       When you are finished, you will be ready to create Chrome RingCentral widgets extension for CRMs.
 
-  .step(data-title='What does Chrome RingCentral widgets extension for CRM do?', data-file='../README.md', data-highlight='17-48')
+  .step(data-title='What does The extension for CRM do?', data-file='../README.md', data-highlight='17-48')
     :markdown
       ## What does Chrome RingCentral widgets extension for CRM do?
 
-      In general, All the third party features of our [ringcentral-embeddable](https://github.com/ringcentral/ringcentral-embeddable) supported and some content insert:
+      [Embbnux Ji](https://github.com/embbnux) has a tuturial: [Building Chrome Extension Integrations with RingCentral Embeddable](https://medium.com/ringcentral-developers/build-a-chrome-extension-with-ringcentral-embeddable-bb6faee808a3), with this tutorial, you could create Chrome extension for any site with RingCentral Embeddable, not just CRM sites.
+
+      In this tutorial, we will show you the advanced features the extension could provide for CRM sites.
 
       - For CRM contact phone number text, we make it click-to-call link.
 
-      ![ ](https://github.com/zxdong262/ringcentral-embeddable-extension-factory/raw/master/screenshots/fac-1.png)
+      ![ ](https://github.com/ringcentral/ringcentral-embeddable-extension-factory/raw/master/screenshots/fac-1.png)
 
       - For CRM contact list, we will add a hover-to-show tooltip to show click-to-call button.
 
-      ![cc](https://github.com/zxdong262/ringcentral-embeddable-extension-factory/raw/master/screenshots/fac-2.png)
+      ![cc](https://github.com/ringcentral/ringcentral-embeddable-extension-factory/raw/master/screenshots/fac-2.png)
 
       - For CRM contact info page, we will add a click-to-call button in proper position.
 
-      ![ ](https://github.com/zxdong262/ringcentral-embeddable-extension-factory/raw/master/screenshots/fac-3.png)
+      ![ ](https://github.com/ringcentral/ringcentral-embeddable-extension-factory/raw/master/screenshots/fac-3.png)
 
       - Sync CRM contacts to our widgets after user authorize.
 
@@ -73,23 +75,27 @@ script.
 
       [https://youtu.be/Qfje5d5OdK0](https://youtu.be/Qfje5d5OdK0)
 
-  .step(data-title='Prepare Your Environment', data-file='../README.md', data-highlight='68-99')
+  .step(data-title='Init extension project', data-file='../README.md', data-highlight='68-99')
     :markdown
-      ## Prepare Your Environment
+      ## Init extension project
 
-      Need nodejs 8.10+/npm, recommend using [nvm](https://github.com/creationix/nvm) to install nodejs/npm.
+      You need nodejs 8.10+/npm, recommend using [nvm](https://github.com/creationix/nvm) to install nodejs/npm.
 
-      Then let's create an extension project with [ringcentral-embeddable-extension-factory](https://github.com/zxdong262/ringcentral-embeddable-extension-factory):
+      Then let's create an extension project with our CLI tool: [ringcentral-embeddable-extension-factory](https://github.com/ringcentral/ringcentral-embeddable-extension-factory):
 
       ```
       npx ringcentral-embeddable-extension-factory my-app
 
       # make sure you set `https://*.insightly.com/*` as url, we will use insightly as target CRM site.
       ```
+      - CLI tool promotes questions like name, decsription, url,
+      - make sure you set `https://*.pipedrive.com/*` as url, since we will use pipedrive as target CRM site.
 
       Looks like this:
 
-      ![ ](https://github.com/zxdong262/ringcentral-embeddable-extension-factory/raw/master/screenshots/cli.png)
+      ![ ](https://github.com/ringcentral/ringcentral-embeddable-extension-factory/raw/master/screenshots/cli.png)
+
+      And there is a [video](https://youtu.be/2njQSk8x2K4) to show this too.
 
       Then, after the project folder is created, install the necessary prerequisites:
 
@@ -102,12 +108,12 @@ script.
       # create local config file
       cp config.sample.js config.js
 
-      # edit config.js, set proper `thirdPartyConfigs.serviceName`
+      # edit config.js, set `thirdPartyConfigs.serviceName` to `pipedrive`
 
       # let's build the extension
       npm start
 
-      # now my-app/dist is ready for use as extension source
+      # now dist folder is ready for use as extension source
       ```
 
   .step(data-title='Load extension to Chrome', data-file='../README.md', data-highlight='86-89')
@@ -117,13 +123,13 @@ script.
       1. Go to Chrome extensions page.
       2. Open developer mode
       3. Load `dist` as unpacked package.
-      4. Go to the CRM site to check
+      4. Go to the [pipedrive.com](https://www.pipedrive.com), login and check it.
 
-  .step(data-title='Add features to extension', data-file='../README.md', data-highlight='91-100')
+  .step(data-title='Add advanced features to extension', data-file='../README.md', data-highlight='91-100')
     :markdown
-      ## Add features to extension
+      ## Add advanced features to extension
 
-      You can see that without any coding, currently we just add the [ringcentral-embeddable](https://github.com/ringcentral/ringcentral-embeddable) Phone widgets, you call with it, but it is not interactive with CRM site yet, All those features listed need your coding efforts to make it work.
+      You can see that without any coding, currently we just add the [ringcentral-embeddable](https://github.com/ringcentral/ringcentral-embeddable) Phone widgets, you call with it, but it is not interactive with CRM site yet, All those features listed in previous chapter need your coding efforts to make it work.
 
       To make it easier, we already set common modules to reduce developer efforts, you could set proper selectors, methods to make all features to work:
 
@@ -132,17 +138,19 @@ script.
       - Further more you can edit [dist/manifest.json](dist/manifest.json) and [dist/background.js](dist/background.js) to do more customization work.
       - And you can always read [Realworld code examples](https://github.com/ringcentral-tutorials/build-chrome-ringcentral-widgets-extension-for-crm#realworld-code-examples) to get some hint about how to do it.
 
-      In the following chaptors, we will learn how exactly to make it work. This tutorial will take `insightly.com` as example, before continuing, please create an account in `insightly.com`, it is free. And we already build the insightly extension already, you can check the [source code](https://github.com/zxdong262/insightly-embeddable-ringcentral-phone).
+      In the following chapters, you will learn how exactly to make it work. This tutorial will take [pipedrive.com](https://www.pipedrive.com) as target CRM site, they have a modern single page app site.
+
+      Before continuing, please register an free account, login and add some contacts with proper email and real contact number.
 
   .step(data-title='Convert phone number text to click-to-call link', data-file='../README.md', data-highlight='91-100')
     :markdown
       ## Convert phone number text to click-to-call link
 
-      ![ ](https://github.com/zxdong262/ringcentral-embeddable-extension-factory/raw/master/screenshots/fac-1.png)
+      ![ ](https://github.com/ringcentral/ringcentral-embeddable-extension-factory/raw/master/screenshots/fac-1.png)
 
       It is pretty simple, we just need to find proper css selector.
 
-      ![ ](https://github.com/zxdong262/ringcentral-embeddable-extension-factory/raw/master/screenshots/txt-to-link.png)
+      ![ ](images/numbers.png)
 
       And edit `src/chrome-extension/config.js` `phoneNumberSelectors` to be like this:
 
@@ -152,117 +160,94 @@ script.
           ///* example config
           {
             urlCheck: (href) => {
-              return href.includes('?blade=/details/contact')
+              return /\/person\/\d+/.test(href)
             },
-            selector: '#modal-details-body .metadata-span-phone'
+            selector: '[data-test="phone-label"]'
           }
           //*/
         ]
       ```
 
-      Then refresh extension in Chrome extension page, check in insightly contact detail page.
+      Then refresh extension in Chrome extension page, check in pipedrive.com's contact detail page.
 
 
   .step(data-title='Add a click-to-call button in contact info page', data-file='../README.md', data-highlight='91-100')
     :markdown
       ## Add a click-to-call button in contact info page
 
-      ![ ](https://github.com/zxdong262/ringcentral-embeddable-extension-factory/raw/master/screenshots/fac-2.png)
+      ![ ](images/btn.png)
 
       And edit `src/chrome-extension/config.js` `insertClickToCallButton` to be like this:
 
-      As you can see, insightly contact page just have all phhone number info in dom,
-      so we can just extract them from dom
-      ```js
+      As you can see, pipedrive contact page just have all phone numbers info in dom,
+      so we can just extract them from dom, since the code is a bit long, please check this link to compare the code:
 
-        import {
-          RCBTNCLS2
-        } from './common/helpers'
+      [source code compare](https://github.com/zxdong262/pipedrive-embeddable-ringcentral-phone/commit/7f7d3ed346bec32fe675a301aee44f88682642c3)
 
-        export const insertClickToCallButton = [
-          {
-            // must match page url
-            urlCheck: href => {
-              return href.includes('?blade=/details/contact')
-            },
+      Then refresh extension in Chrome extension page, check in pipedrive.com's contact detail page.
 
-            // define in the page how to get phone number,
-            // if can not get phone number, will not insert the call button
-            getContactPhoneNumbers: () => {
-              let phones = document.querySelectorAll('.contact [data-display-type="PHONE"]')
-              return Array.from(phones)
-                .reduce((prev, node) => {
-                  let titleWrap = node.querySelector('.metadata-row-title')
-                  let title = titleWrap
-                    ? titleWrap.textContent.trim()
-                    : 'Phone Number'
-                  let numberWrap = node.querySelector('.metadata-row-viewer-phone')
-                  let number = numberWrap
-                    ? numberWrap.textContent.trim()
-                    : ''
-                  if (number) {
-                    prev.push({
-                      id: title,
-                      title,
-                      number
-                    })
-                  }
-                  return prev
-                }, [])
-            },
-
-            // parent dom to insert call button
-            // can be multiple condition
-            // the first one matches, rest the array will be ignored
-            parentsToInsertButton: [
-              {
-                getElem: () => {
-                  return document.querySelector('#modal-details-body header .btn-toolbar')
-                },
-                insertMethod: 'insertBefore',
-                shouldInsert: () => {
-                  return !document.querySelector('#modal-details-body header .btn-toolbar .' + RCBTNCLS2)
-                }
-              }
-            ]
-          }
-        ]
-      ```
-
-      Then refresh extension in Chrome extension page, check in insightly contact detail page.
-
-  .step(data-title='Try it yourself: Add hover-to-show tooltip to show click-to-call button', data-file='../README.md', data-highlight='91-100')
+  .step(data-title='Practice: Add hover-to-show tooltip to show click-to-call button', data-file='../README.md', data-highlight='91-100')
     :markdown
-      ## Try it yourself: Add hover-to-show tooltip to show click-to-call button
+      ## Practice: Add hover-to-show tooltip to show click-to-call button
 
       If you get a sense of how the config works, now it is time to try it yourself.
 
       Edit `src/chrome-extension/config.js` `hoverShowClickToCallButton` function to make this feature work.
 
-      Think about your solution and compare with https://github.com/zxdong262/insightly-embeddable-ringcentral-phone/blob/master/src/chrome-extension/config.js
+      Think about your solution and compare with [source code](https://github.com/zxdong262/pipedrive-embeddable-ringcentral-phone/commit/f89129f19204f4088a2c581ae90355ed113b70e4)
 
-  .step(data-title='Try it yourself: Add third party features', data-file='../README.md', data-highlight='91-100')
+  .step(data-title='Add third party features', data-file='../README.md', data-highlight='91-100')
     :markdown
-      ## Try it yourself: Add third party features
+      ## Add third party features
 
       After the warn up, now it is time to try the third party features.
 
       Read our [third party document](https://github.com/ringcentral/ringcentral-embeddable/blob/master/docs/third-party-service-in-widget.md) first.
 
-      Then follow `src/chrome-extension/features/third-party-api.js`'s instruction to finish all the todos.
+      If you want to try yourself, you could follow `src/chrome-extension/features/third-party-api.js`'s instruction to finish all the todos.
 
-      Think about your solution and compare with [https://github.com/zxdong262/insightly-embeddable-ringcentral-phone/tree/master/src](https://github.com/zxdong262/insightly-embeddable-ringcentral-phone/tree/master/src)
+      In next chapter we will talk about authorization and sync contacts to RingCentral widgets.
 
-  .step(data-title='Try it yourself: Addtional settings', data-file='../README.md', data-highlight='91-100')
+  .step(data-title='Add third party features: authorization and contacts', data-file='../README.md', data-highlight='91-100')
     :markdown
-      ## Try it yourself: Addtional settings
+      ## Add third party features: authorization and contacts
+
+      It is a common practice that getting user authorization before accessing user data, so we make common UI module to do it, developer just need to define the function of authorization(`doAuth`) in `src/chrome-extension/features/auth.js`.
+
+      Since CRM site are so different, there is no common practice for this. For example:
+
+      - Hubspot support oauth, so we could use iframe to visit oauth url
+      - Insightly support apiKey, so we could get apiKey from user setting page
+      - For pipedrive, we do not need to do anything, since they do not support apiKey or oauth, just set to `authed`.
+
+      In general, if you could access user data as logined user from browser, no special action needed.
+
+      You may need to check network requests to find out how to get contacts list:
+
+      ![ ](images/network.png)
+
+      So we can set proper method to get pipedrive's conatct list, check the [source code compare](https://github.com/zxdong262/pipedrive-embeddable-ringcentral-phone/commit/aee58559d688b9bbaf73460a5b6d4e6d832f0235) to edit your code accordingly.
+
+      After finish editing, refresh extension in Chrome extension page, check in pipedrive.com's contacts page, click contacts panel of RingCentral widgets, click auth button and try to call some contacts.
+
+      ![ ](images/contacts.png)
+
+  .step(data-title='Practice: The other third party features', data-file='../README.md', data-highlight='91-100')
+    :markdown
+      ## Practice: The other third party features
+
+      Since contacts and authorization are done, we will leave you to finish the Syncing call log and showing contact activities features as a practice.
+
+  .step(data-title='Practice: Additional settings', data-file='../README.md', data-highlight='91-100')
+    :markdown
+      ## Practice: Additional settings
 
       Further more you can edit [dist/manifest.json](dist/manifest.json) and [dist/background.js](dist/background.js) to do more customization work, such as filtered urls you do not want to show widgets etc.
 
       Read source code to check the code in real world:
 
-      - https://github.com/zxdong262/insightly-embeddable-ringcentral-phone/blob/master/dist/manifest.json
-      - https://github.com/zxdong262/insightly-embeddable-ringcentral-phone/blob/master/dist/background.js
+      - https://github.com/zxdong262/pipedrive-embeddable-ringcentral-phone/blob/master/dist/manifest.json
+      - https://github.com/zxdong262/pipedrive-embeddable-ringcentral-phone/blob/master/dist/background.js
 
       That is all, thanks for reading!
 
