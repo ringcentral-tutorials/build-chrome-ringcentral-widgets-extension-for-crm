@@ -85,6 +85,8 @@ script.
 
       ```
       npx ringcentral-embeddable-extension-factory my-app
+
+      # make sure you set `https://*.insightly.com/*` as url, we will use insightly as target CRM site.
       ```
       - CLI tool promotes questions like name, decsription, url,
       - make sure you set `https://*.pipedrive.com/*` as url, since we will use pipedrive as target CRM site.
@@ -153,7 +155,10 @@ script.
       And edit `src/chrome-extension/config.js` `phoneNumberSelectors` to be like this:
 
       ```js
+<<<<<<< HEAD
 
+=======
+>>>>>>> 22cfc247b9dbff0ca7cf3ff1e89747c19810c4d5
         // modify phone number text to click-to-call link
         export const phoneNumberSelectors = [
           ///* example config

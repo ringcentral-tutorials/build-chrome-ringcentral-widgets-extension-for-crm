@@ -43,6 +43,13 @@ To get started, click the &quot;Start Tutorial&quot; button below.</p><a href="#
 <p>In this tutorial, we will show you the advanced features the extension could provide for CRM sites.</p>
 <ul>
 <li>For CRM contact phone number text, we make it click-to-call link.</li>
+<<<<<<< HEAD
+=======
+</ul>
+<p><img src="https://github.com/zxdong262/ringcentral-embeddable-extension-factory/raw/master/screenshots/fac-1.png" alt=" "></p>
+<ul>
+<li>For CRM contact list, we will add a hover-to-show tooltip to show click-to-call button.</li>
+>>>>>>> 22cfc247b9dbff0ca7cf3ff1e89747c19810c4d5
 </ul>
 <p><img src="https://github.com/ringcentral/ringcentral-embeddable-extension-factory/raw/master/screenshots/fac-1.png" alt=" "></p>
 <ul>
@@ -50,10 +57,13 @@ To get started, click the &quot;Start Tutorial&quot; button below.</p><a href="#
 </ul>
 <p><img src="https://github.com/ringcentral/ringcentral-embeddable-extension-factory/raw/master/screenshots/fac-2.png" alt="cc"></p>
 <ul>
+<<<<<<< HEAD
 <li>For CRM contact info page, we will add a click-to-call button in proper position.</li>
 </ul>
 <p><img src="https://github.com/ringcentral/ringcentral-embeddable-extension-factory/raw/master/screenshots/fac-3.png" alt=" "></p>
 <ul>
+=======
+>>>>>>> 22cfc247b9dbff0ca7cf3ff1e89747c19810c4d5
 <li>Sync CRM contacts to our widgets after user authorize.</li>
 </ul>
 <p><img src="https://github.com/zxdong262/insightly-embeddable-ringcentral-phone/raw/master/screenshots/insightly-4.png" alt=" "></p>
@@ -71,6 +81,7 @@ To get started, click the &quot;Start Tutorial&quot; button below.</p><a href="#
 <p><img src="https://github.com/zxdong262/hubspot-embeddable-ringcentral-phone/raw/master/screenshots/hubspot1.png" alt=" "></p>
 <h2 id="demo-video-insightly-">Demo video(Insightly)</h2>
 <p><a href="https://youtu.be/Qfje5d5OdK0">https://youtu.be/Qfje5d5OdK0</a></p>
+<<<<<<< HEAD
 </div><div data-title="Init extension project" data-file="../README.md" data-highlight="68-99" class="step"><h2 id="init-extension-project">Init extension project</h2>
 <p>You need nodejs 8.10+/npm, recommend using <a href="https://github.com/creationix/nvm">nvm</a> to install nodejs/npm.</p>
 <p>Then let&#39;s create an extension project with our CLI tool: <a href="https://github.com/ringcentral/ringcentral-embeddable-extension-factory">ringcentral-embeddable-extension-factory</a>:</p>
@@ -82,6 +93,16 @@ To get started, click the &quot;Start Tutorial&quot; button below.</p><a href="#
 <p>Looks like this:</p>
 <p><img src="https://github.com/ringcentral/ringcentral-embeddable-extension-factory/raw/master/screenshots/cli.png" alt=" "></p>
 <p>And there is a <a href="https://youtu.be/2njQSk8x2K4">video</a> to show this too.</p>
+=======
+</div><div data-title="Prepare Your Environment" data-file="../README.md" data-highlight="68-99" class="step"><h2 id="prepare-your-environment">Prepare Your Environment</h2>
+<p>Need nodejs 8.10+/npm, recommend using <a href="https://github.com/creationix/nvm">nvm</a> to install nodejs/npm.</p>
+<p>Then let&#39;s create an extension project with <a href="https://github.com/zxdong262/ringcentral-embeddable-extension-factory">ringcentral-embeddable-extension-factory</a>:</p>
+<pre><code>npx ringcentral-embeddable-extension-factory my-app
+
+# make sure you set `https://*.insightly.com/*` as url, we will use insightly as target CRM site.
+</code></pre><p>Looks like this:</p>
+<p><img src="https://github.com/zxdong262/ringcentral-embeddable-extension-factory/raw/master/screenshots/cli.png" alt=" "></p>
+>>>>>>> 22cfc247b9dbff0ca7cf3ff1e89747c19810c4d5
 <p>Then, after the project folder is created, install the necessary prerequisites:</p>
 <pre><code>cd my-app
 
@@ -113,6 +134,7 @@ npm start
 <li>Further more you can edit <a href="dist/manifest.json">dist/manifest.json</a> and <a href="dist/background.js">dist/background.js</a> to do more customization work.</li>
 <li>And you can always read <a href="https://github.com/ringcentral-tutorials/build-chrome-ringcentral-widgets-extension-for-crm#realworld-code-examples">Realworld code examples</a> to get some hint about how to do it.</li>
 </ul>
+<<<<<<< HEAD
 <p>In the following chapters, you will learn how exactly to make it work. This tutorial will take <a href="https://www.pipedrive.com">pipedrive.com</a> as target CRM site, they have a modern single page app site.</p>
 <p>Before continuing, please register an free account, login and add some contacts with proper email and real contact number.</p>
 </div><div data-title="Convert phone number text to click-to-call link" data-file="../README.md" data-highlight="91-100" class="step"><h2 id="convert-phone-number-text-to-click-to-call-link">Convert phone number text to click-to-call link</h2>
@@ -122,17 +144,33 @@ npm start
 <p>And edit <code>src/chrome-extension/config.js</code> <code>phoneNumberSelectors</code> to be like this:</p>
 <pre><code class="cm-s-monokai lang-js">
   <span class="cm-comment">// modify phone number text to click-to-call link</span>
+=======
+<p>In the following chaptors, we will learn how exactly to make it work. This tutorial will take <code>insightly.com</code> as example, before continuing, please create an account in <code>insightly.com</code>, it is free. And we already build the insightly extension already, you can check the <a href="https://github.com/zxdong262/insightly-embeddable-ringcentral-phone">source code</a>.</p>
+</div><div data-title="Convert phone number text to click-to-call link" data-file="../README.md" data-highlight="91-100" class="step"><h2 id="convert-phone-number-text-to-click-to-call-link">Convert phone number text to click-to-call link</h2>
+<p><img src="https://github.com/zxdong262/ringcentral-embeddable-extension-factory/raw/master/screenshots/fac-1.png" alt=" "></p>
+<p>It is pretty simple, we just need to find proper css selector.</p>
+<p><img src="https://github.com/zxdong262/ringcentral-embeddable-extension-factory/raw/master/screenshots/txt-to-link.png" alt=" "></p>
+<p>And edit <code>src/chrome-extension/config.js</code> <code>phoneNumberSelectors</code> to be like this:</p>
+<pre><code class="cm-s-monokai lang-js">  <span class="cm-comment">// modify phone number text to click-to-call link</span>
+>>>>>>> 22cfc247b9dbff0ca7cf3ff1e89747c19810c4d5
   <span class="cm-keyword">export</span> <span class="cm-keyword">const</span> <span class="cm-variable">phoneNumberSelectors</span> <span class="cm-operator">=</span> [
     <span class="cm-comment">///* example config</span>
     {
       <span class="cm-property">urlCheck</span>: (<span class="cm-def">href</span>) <span class="cm-operator">=&gt;</span> {
+<<<<<<< HEAD
         <span class="cm-keyword">return</span> <span class="cm-string-2">/\/person\/\d+/</span>.<span class="cm-property">test</span>(<span class="cm-variable-2">href</span>)
       },
       <span class="cm-property">selector</span>: <span class="cm-string">&#39;[data-test=&quot;phone-label&quot;]&#39;</span>
+=======
+        <span class="cm-keyword">return</span> <span class="cm-variable-2">href</span>.<span class="cm-property">includes</span>(<span class="cm-string">&#39;?blade=/details/contact&#39;</span>)
+      },
+      <span class="cm-property">selector</span>: <span class="cm-string">&#39;#modal-details-body .metadata-span-phone&#39;</span>
+>>>>>>> 22cfc247b9dbff0ca7cf3ff1e89747c19810c4d5
     }
     <span class="cm-comment">//*/</span>
   ]
 </code></pre>
+<<<<<<< HEAD
 <p>Then refresh extension in Chrome extension page, check in pipedrive.com&#39;s contact detail page.</p>
 </div><div data-title="Add a click-to-call button in contact info page" data-file="../README.md" data-highlight="91-100" class="step"><h2 id="add-a-click-to-call-button-in-contact-info-page">Add a click-to-call button in contact info page</h2>
 <p><img src="images/btn.png" alt=" "></p>
@@ -174,6 +212,85 @@ so we can just extract them from dom, since the code is a bit long, please check
 <li><a href="https://github.com/zxdong262/pipedrive-embeddable-ringcentral-phone/blob/master/dist/background.js">https://github.com/zxdong262/pipedrive-embeddable-ringcentral-phone/blob/master/dist/background.js</a></li>
 </ul>
 <p>That is all, thanks for reading!</p>
+=======
+<p>Then refresh extension in Chrome extension page, check in insightly contact detail page.</p>
+</div><div data-title="Add a click-to-call button in contact info page" data-file="../README.md" data-highlight="91-100" class="step"><h2 id="add-a-click-to-call-button-in-contact-info-page">Add a click-to-call button in contact info page</h2>
+<p><img src="https://github.com/zxdong262/ringcentral-embeddable-extension-factory/raw/master/screenshots/fac-2.png" alt=" "></p>
+<p>And edit <code>src/chrome-extension/config.js</code> <code>insertClickToCallButton</code> to be like this:</p>
+<p>As you can see, insightly contact page just have all phhone number info in dom,
+so we can just extract them from dom</p>
+<pre><code class="cm-s-monokai lang-js">
+  <span class="cm-keyword">import</span> {
+    <span class="cm-variable">RCBTNCLS2</span>
+  } <span class="cm-keyword">from</span> <span class="cm-string">&#39;./common/helpers&#39;</span>
+
+  <span class="cm-keyword">export</span> <span class="cm-keyword">const</span> <span class="cm-variable">insertClickToCallButton</span> <span class="cm-operator">=</span> [
+    {
+      <span class="cm-comment">// must match page url</span>
+      <span class="cm-property">urlCheck</span>: <span class="cm-def">href</span> <span class="cm-operator">=&gt;</span> {
+        <span class="cm-keyword">return</span> <span class="cm-variable-2">href</span>.<span class="cm-property">includes</span>(<span class="cm-string">&#39;?blade=/details/contact&#39;</span>)
+      },
+
+      <span class="cm-comment">// define in the page how to get phone number,</span>
+      <span class="cm-comment">// if can not get phone number, will not insert the call button</span>
+      <span class="cm-property">getContactPhoneNumbers</span>: () <span class="cm-operator">=&gt;</span> {
+        <span class="cm-keyword">let</span> <span class="cm-def">phones</span> <span class="cm-operator">=</span> <span class="cm-variable">document</span>.<span class="cm-property">querySelectorAll</span>(<span class="cm-string">&#39;.contact [data-display-type=&quot;PHONE&quot;]&#39;</span>)
+        <span class="cm-keyword">return</span> <span class="cm-variable">Array</span>.<span class="cm-property">from</span>(<span class="cm-variable-2">phones</span>)
+          .<span class="cm-property">reduce</span>((<span class="cm-def">prev</span>, <span class="cm-def">node</span>) <span class="cm-operator">=&gt;</span> {
+            <span class="cm-keyword">let</span> <span class="cm-def">titleWrap</span> <span class="cm-operator">=</span> <span class="cm-variable-2">node</span>.<span class="cm-property">querySelector</span>(<span class="cm-string">&#39;.metadata-row-title&#39;</span>)
+            <span class="cm-keyword">let</span> <span class="cm-def">title</span> <span class="cm-operator">=</span> <span class="cm-variable-2">titleWrap</span>
+              <span class="cm-operator">?</span> <span class="cm-variable-2">titleWrap</span>.<span class="cm-property">textContent</span>.<span class="cm-property">trim</span>()
+              : <span class="cm-string">&#39;Phone Number&#39;</span>
+            <span class="cm-keyword">let</span> <span class="cm-def">numberWrap</span> <span class="cm-operator">=</span> <span class="cm-variable-2">node</span>.<span class="cm-property">querySelector</span>(<span class="cm-string">&#39;.metadata-row-viewer-phone&#39;</span>)
+            <span class="cm-keyword">let</span> <span class="cm-def">number</span> <span class="cm-operator">=</span> <span class="cm-variable-2">numberWrap</span>
+              <span class="cm-operator">?</span> <span class="cm-variable-2">numberWrap</span>.<span class="cm-property">textContent</span>.<span class="cm-property">trim</span>()
+              : <span class="cm-string">&#39;&#39;</span>
+            <span class="cm-keyword">if</span> (<span class="cm-variable-2">number</span>) {
+              <span class="cm-variable-2">prev</span>.<span class="cm-property">push</span>({
+                <span class="cm-property">id</span>: <span class="cm-variable-2">title</span>,
+                <span class="cm-property">title</span>,
+                <span class="cm-property">number</span>
+              })
+            }
+            <span class="cm-keyword">return</span> <span class="cm-variable-2">prev</span>
+          }, [])
+      },
+
+      <span class="cm-comment">// parent dom to insert call button</span>
+      <span class="cm-comment">// can be multiple condition</span>
+      <span class="cm-comment">// the first one matches, rest the array will be ignored</span>
+      <span class="cm-property">parentsToInsertButton</span>: [
+        {
+          <span class="cm-property">getElem</span>: () <span class="cm-operator">=&gt;</span> {
+            <span class="cm-keyword">return</span> <span class="cm-variable">document</span>.<span class="cm-property">querySelector</span>(<span class="cm-string">&#39;#modal-details-body header .btn-toolbar&#39;</span>)
+          },
+          <span class="cm-property">insertMethod</span>: <span class="cm-string">&#39;insertBefore&#39;</span>,
+          <span class="cm-property">shouldInsert</span>: () <span class="cm-operator">=&gt;</span> {
+            <span class="cm-keyword">return</span> <span class="cm-operator">!</span><span class="cm-variable">document</span>.<span class="cm-property">querySelector</span>(<span class="cm-string">&#39;#modal-details-body header .btn-toolbar .&#39;</span> <span class="cm-operator">+</span> <span class="cm-variable">RCBTNCLS2</span>)
+          }
+        }
+      ]
+    }
+  ]
+</code></pre>
+<p>Then refresh extension in Chrome extension page, check in insightly contact detail page.</p>
+</div><div data-title="Try it yourself: Add hover-to-show tooltip to show click-to-call button" data-file="../README.md" data-highlight="91-100" class="step"><h2 id="try-it-yourself-add-hover-to-show-tooltip-to-show-click-to-call-button">Try it yourself: Add hover-to-show tooltip to show click-to-call button</h2>
+<p>If you get a sense of how the config works, now it is time to try it yourself.</p>
+<p>Edit <code>src/chrome-extension/config.js</code> <code>hoverShowClickToCallButton</code> function to make this feature work.</p>
+<p>Think about your solution and compare with <a href="https://github.com/zxdong262/insightly-embeddable-ringcentral-phone/blob/master/src/chrome-extension/config.js">https://github.com/zxdong262/insightly-embeddable-ringcentral-phone/blob/master/src/chrome-extension/config.js</a></p>
+</div><div data-title="Try it yourself: Add third party features" data-file="../README.md" data-highlight="91-100" class="step"><h2 id="try-it-yourself-add-third-party-features">Try it yourself: Add third party features</h2>
+<p>After the warn up, now it is time to try the third party features.</p>
+<p>Read our <a href="https://github.com/ringcentral/ringcentral-embeddable/blob/master/docs/third-party-service-in-widget.md">third party document</a> first.</p>
+<p>Then follow <code>src/chrome-extension/features/third-party-api.js</code>&#39;s instruction to finish all the todos.</p>
+<p>Think about your solution and compare with <a href="https://github.com/zxdong262/insightly-embeddable-ringcentral-phone/tree/master/src">https://github.com/zxdong262/insightly-embeddable-ringcentral-phone/tree/master/src</a></p>
+</div><div data-title="Try it yourself: Addtional settings" data-file="../README.md" data-highlight="91-100" class="step"><h2 id="try-it-yourself-addtional-settings">Try it yourself: Addtional settings</h2>
+<p>Further more you can edit <a href="dist/manifest.json">dist/manifest.json</a> and <a href="dist/background.js">dist/background.js</a> to do more customization work, such as filtered urls you do not want to show widgets etc.</p>
+<p>Read source code to check the code in real world:</p>
+<ul>
+<li><a href="https://github.com/zxdong262/insightly-embeddable-ringcentral-phone/blob/master/dist/manifest.json">https://github.com/zxdong262/insightly-embeddable-ringcentral-phone/blob/master/dist/manifest.json</a></li>
+<li><a href="https://github.com/zxdong262/insightly-embeddable-ringcentral-phone/blob/master/dist/background.js">https://github.com/zxdong262/insightly-embeddable-ringcentral-phone/blob/master/dist/background.js</a></li>
+</ul>
+>>>>>>> 22cfc247b9dbff0ca7cf3ff1e89747c19810c4d5
 </div></div>
 <div class="saurus-files" style="display:none;"><textarea class="saurus-file" data-file="../README.md" data-mode="markdown">IyBCdWlsZCBDaHJvbWUgUmluZ0NlbnRyYWwgd2lkZ2V0cyBleHRlbnNpb24gZm9yIENSTSA8IS0tIG9taXQgaW4gdG9jIC0tPgoKVGhpcyB0dXRvcmlhbCB3aWxsIHNob3cgeW91IGhvdyB0byBidWlsZCBDaHJvbWUgUmluZ0NlbnRyYWwgd2lkZ2V0cyBleHRlbnNpb24gZm9yIENSTSB3aXRoIFtyaW5nY2VudHJhbC1lbWJlZGRhYmxlLWV4dGVuc2lvbi1mYWN0b3J5XShodHRwczovL2dpdGh1Yi5jb20venhkb25nMjYyL3JpbmdjZW50cmFsLWVtYmVkZGFibGUtZXh0ZW5zaW9uLWZhY3RvcnkpCgojIyBUYWJsZSBvZiBDb250ZW50cyA8IS0tIG9taXQgaW4gdG9jIC0tPgoKLSBbV2hhdCBkb2VzIENocm9tZSBSaW5nQ2VudHJhbCB3aWRnZXRzIGV4dGVuc2lvbiBmb3IgQ1JNIGRvP10oI3doYXQtZG9lcy1jaHJvbWUtcmluZ2NlbnRyYWwtd2lkZ2V0cy1leHRlbnNpb24tZm9yLWNybS1kbykKLSBbRGVtbyB2aWRlbyhJbnNpZ2h0bHkpXSgjZGVtby12aWRlb2luc2lnaHRseSkKLSBbU2NyZWVuc2hvdHMoSW5zaWdodGx5IGFuZCBIdWJzcG90KV0oI3NjcmVlbnNob3RzaW5zaWdodGx5LWFuZC1odWJzcG90KQotIFtSZWFsd29ybGQgY29kZSBleGFtcGxlc10oI3JlYWx3b3JsZC1jb2RlLWV4YW1wbGVzKQotIFtDcmVhdGUgcHJvamVjdCB3aXRoIHJpbmdjZW50cmFsLWVtYmVkZGFibGUtZXh0ZW5zaW9uLWZhY3RvcnldKCNjcmVhdGUtcHJvamVjdC13aXRoLXJpbmdjZW50cmFsLWVtYmVkZGFibGUtZXh0ZW5zaW9uLWZhY3RvcnkpCi0gW0J1aWxkIGFuZCBVc2VdKCNidWlsZC1hbmQtdXNlKQotIFtNYWtlIHRoZSBmZWF0dXJlcyB3b3Jrc10oI21ha2UtdGhlLWZlYXR1cmVzLXdvcmtzKQotIFtCdWlsZCB3aXRoIGN1c3RvbSBSaW5nQ2VudHJhbCBjbGllbnRJRC9hcHBTZXJ2ZXJdKCNidWlsZC13aXRoLWN1c3RvbS1yaW5nY2VudHJhbC1jbGllbnRpZGFwcHNlcnZlcikKLSBbQ3JlZGl0c10oI2NyZWRpdHMpCi0gW0xpY2Vuc2VdKCNsaWNlbnNlKQoKIyMgV2hhdCBkb2VzIENocm9tZSBSaW5nQ2VudHJhbCB3aWRnZXRzIGV4dGVuc2lvbiBmb3IgQ1JNIGRvPwoKSW4gZ2VuZXJhbCwgQWxsIHRoZSB0aGlyZCBwYXJ0eSBmZWF0dXJlcyBvZiBvdXIgW3JpbmdjZW50cmFsLWVtYmVkZGFibGVdKGh0dHBzOi8vZ2l0aHViLmNvbS9yaW5nY2VudHJhbC9yaW5nY2VudHJhbC1lbWJlZGRhYmxlKSBzdXBwb3J0ZWQgYW5kIHNvbWUgY29udGVudCBpbnNlcnQ6CgotIEZvciBDUk0gY29udGFjdCBwaG9uZSBudW1iZXIgdGV4dCwgd2UgbWFrZSBpdCBjbGljay10by1jYWxsIGxpbmsuCgohWyBdKGh0dHBzOi8vZ2l0aHViLmNvbS96eGRvbmcyNjIvcmluZ2NlbnRyYWwtZW1iZWRkYWJsZS1leHRlbnNpb24tZmFjdG9yeS9yYXcvbWFzdGVyL3NjcmVlbnNob3RzL2ZhYy0xLnBuZykKCi0gRm9yIENSTSBjb250YWN0IGluZm8gcGFnZSwgd2Ugd2lsbCBhZGQgYSBjbGljay10by1jYWxsIGJ1dHRvbiBpbiBwcm9wZXIgcG9zaXRpb24uCgohWyBdKGh0dHBzOi8vZ2l0aHViLmNvbS96eGRvbmcyNjIvcmluZ2NlbnRyYWwtZW1iZWRkYWJsZS1leHRlbnNpb24tZmFjdG9yeS9yYXcvbWFzdGVyL3NjcmVlbnNob3RzL2ZhYy0zLnBuZykKCi0gRm9yIENSTSBjb250YWN0IGxpc3QsIHdlIHdpbGwgYWRkIGEgaG92ZXItdG8tc2hvdyB0b29sdGlwIHRvIHNob3cgY2xpY2stdG8tY2FsbCBidXR0b24uCgohW2NjXShodHRwczovL2dpdGh1Yi5jb20venhkb25nMjYyL3JpbmdjZW50cmFsLWVtYmVkZGFibGUtZXh0ZW5zaW9uLWZhY3RvcnkvcmF3L21hc3Rlci9zY3JlZW5zaG90cy9mYWMtMi5wbmcpCgotIFN5bmMgQ1JNIGNvbnRhY3RzIHRvIG91ciB3aWRnZXRzIGFmdGVyIHVzZXIgYXV0aG9yaXplLgoKIVsgXShodHRwczovL2dpdGh1Yi5jb20venhkb25nMjYyL2luc2lnaHRseS1lbWJlZGRhYmxlLXJpbmdjZW50cmFsLXBob25lL3Jhdy9tYXN0ZXIvc2NyZWVuc2hvdHMvaW5zaWdodGx5LTQucG5nKQoKLSBTeW5jIGNhbGwgbG9nIHRvIENSTSBhdXRvbWF0aWNhbGx5IG9yIG1hbnVhbGx5LgoKIVsgXShodHRwczovL2dpdGh1Yi5jb20venhkb25nMjYyL2h1YnNwb3QtZW1iZWRkYWJsZS1yaW5nY2VudHJhbC1waG9uZS9yYXcvbWFzdGVyL3NjcmVlbnNob3RzL2hzNi5wbmcpCgotIENoZWNrIENSTSBjb250YWN0IGFjdGl2aXRpZXMgZnJvbSBvdXIgd2lkZ2V0cy4KCiFbIF0oaHR0cHM6Ly9naXRodWIuY29tL3p4ZG9uZzI2Mi9odWJzcG90LWVtYmVkZGFibGUtcmluZ2NlbnRyYWwtcGhvbmUvcmF3L21hc3Rlci9zY3JlZW5zaG90cy9oczcucG5nKQoKLSBTaG93IENSTSBjb250YWN0IGluZm8gcGFuZWwgd2hlbiBpbmJvdW5kL291dGJvdW5kIGNhbGwgd2l0aCBDUk0gY29udGFjdC4KCiFbIF0oaHR0cHM6Ly9naXRodWIuY29tL3p4ZG9uZzI2Mi9odWJzcG90LWVtYmVkZGFibGUtcmluZ2NlbnRyYWwtcGhvbmUvcmF3L21hc3Rlci9zY3JlZW5zaG90cy9odWJzcG90MS5wbmcpCgojIyBEZW1vIHZpZGVvKEluc2lnaHRseSkKCltodHRwczovL3lvdXR1LmJlL1FmamU1ZDVPZEswXShodHRwczovL3lvdXR1LmJlL1FmamU1ZDVPZEswKQoKIyMgU2NyZWVuc2hvdHMoSW5zaWdodGx5IGFuZCBIdWJzcG90KQoKfCBzY3JlZW5zaG90cyAgICAgICAgICAgIHwgIHNjcmVlbnNob3RzIHwKOi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS06fDotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tOgohW2luc2lnaHRseS0xXShodHRwczovL2dpdGh1Yi5jb20venhkb25nMjYyL2luc2lnaHRseS1lbWJlZGRhYmxlLXJpbmdjZW50cmFsLXBob25lL3Jhdy9tYXN0ZXIvc2NyZWVuc2hvdHMvaW5zaWdodGx5LTUucG5nKSB8ICFbaW5zaWdodGx5LTFdKGh0dHBzOi8vZ2l0aHViLmNvbS96eGRvbmcyNjIvaW5zaWdodGx5LWVtYmVkZGFibGUtcmluZ2NlbnRyYWwtcGhvbmUvcmF3L21hc3Rlci9zY3JlZW5zaG90cy9pbnNpZ2h0bHktNC5wbmcpCiFbaW5zaWdodGx5LTFdKGh0dHBzOi8vZ2l0aHViLmNvbS96eGRvbmcyNjIvaW5zaWdodGx5LWVtYmVkZGFibGUtcmluZ2NlbnRyYWwtcGhvbmUvcmF3L21hc3Rlci9zY3JlZW5zaG90cy9pbnNpZ2h0bHktMy5wbmcpIHwgIVtpbnNpZ2h0bHktMV0oaHR0cHM6Ly9naXRodWIuY29tL3p4ZG9uZzI2Mi9pbnNpZ2h0bHktZW1iZWRkYWJsZS1yaW5nY2VudHJhbC1waG9uZS9yYXcvbWFzdGVyL3NjcmVlbnNob3RzL2luc2lnaHRseS0yLnBuZykKIVtpbnNpZ2h0bHktMV0oaHR0cHM6Ly9naXRodWIuY29tL3p4ZG9uZzI2Mi9pbnNpZ2h0bHktZW1iZWRkYWJsZS1yaW5nY2VudHJhbC1waG9uZS9yYXcvbWFzdGVyL3NjcmVlbnNob3RzL2luc2lnaHRseS0xLnBuZykgfCAhW3hdKGh0dHBzOi8vZ2l0aHViLmNvbS96eGRvbmcyNjIvaHVic3BvdC1lbWJlZGRhYmxlLXJpbmdjZW50cmFsLXBob25lL3Jhdy9tYXN0ZXIvc2NyZWVuc2hvdHMvaHM2LnBuZykKIVt4XShodHRwczovL2dpdGh1Yi5jb20venhkb25nMjYyL2h1YnNwb3QtZW1iZWRkYWJsZS1yaW5nY2VudHJhbC1waG9uZS9yYXcvbWFzdGVyL3NjcmVlbnNob3RzL2hzNy5wbmcpIHwgIAoKIyMgUmVhbHdvcmxkIGNvZGUgZXhhbXBsZXMKCi0gW2luc2lnaHRseS1lbWJlZGRhYmxlLXJpbmdjZW50cmFsLXBob25lXShodHRwczovL2dpdGh1Yi5jb20venhkb25nMjYyL2luc2lnaHRseS1lbWJlZGRhYmxlLXJpbmdjZW50cmFsLXBob25lKQotIFtodWJzcG90LWVtYmVkZGFibGUtcmluZ2NlbnRyYWwtcGhvbmVdKGh0dHBzOi8vZ2l0aHViLmNvbS96eGRvbmcyNjIvaHVic3BvdC1lbWJlZGRhYmxlLXJpbmdjZW50cmFsLXBob25lKQoKIyMgQ3JlYXRlIHByb2plY3Qgd2l0aCByaW5nY2VudHJhbC1lbWJlZGRhYmxlLWV4dGVuc2lvbi1mYWN0b3J5CgpOZWVkIG5vZGVqcyA4LjEwKy9ucG0sIHJlY29tbWVuZCB1c2luZyBbbnZtXShodHRwczovL2dpdGh1Yi5jb20vY3JlYXRpb25peC9udm0pIHRvIGluc3RhbGwgbm9kZWpzL25wbS4KClRoZW4gbGV0J3MgY3JlYXRlIGFuIGV4dGVuc2lvbiBwcm9qZWN0IHdpdGggW3JpbmdjZW50cmFsLWVtYmVkZGFibGUtZXh0ZW5zaW9uLWZhY3RvcnldKGh0dHBzOi8vZ2l0aHViLmNvbS96eGRvbmcyNjIvcmluZ2NlbnRyYWwtZW1iZWRkYWJsZS1leHRlbnNpb24tZmFjdG9yeSk6CgpgYGBiYXNoCm5weCByaW5nY2VudHJhbC1lbWJlZGRhYmxlLWV4dGVuc2lvbi1mYWN0b3J5IG15LWFwcApgYGAKCkxvb2tzIGxpa2UgdGhpczoKCiFbIF0oaHR0cHM6Ly9naXRodWIuY29tL3p4ZG9uZzI2Mi9yaW5nY2VudHJhbC1lbWJlZGRhYmxlLWV4dGVuc2lvbi1mYWN0b3J5L3Jhdy9tYXN0ZXIvc2NyZWVuc2hvdHMvY2xpLnBuZykKCiMjIEJ1aWxkIGFuZCBVc2UKCjEuIGJ1aWxkIGBjb250ZW50LmpzYAoKYGBgYmFzaAoKIyBpbnN0YWxsIGRlcGVuZGVuY2llcywgcmVxdWlyZXMgbm9kZWpzOC4xMCsKbnBtIGkKCiMgY3JlYXRlIGNvbmZpZyBmaWxlLCBhbmQgc2V0IHByb3BlciB0aGlyZFBhcnR5Q29uZmlncy5zZXJ2aWNlTmFtZQpjcCBjb25maWcuc2FtcGxlLmpzIGNvbmZpZy5qcwoKIyB0aGVuIHJ1biBpdApucG0gc3RhcnQKCiMgZWRpdCBzcmMvKi5qcywgd2VicGFjayB3aWxsIGF1dG8tcmVidWlsZCwKIyBhZnRlciByZWJ1aWxkLCBkbyBub3QgZm9yZ2V0IHRvIHJlZnJlc2ggaW4gZXh0ZW5zaW9uIHBhZ2UKYGBgCgoxLiBHbyB0byBDaHJvbWUgZXh0ZW5zaW9ucyBwYWdlLgoyLiBPcGVuIGRldmVsb3BlciBtb2RlCjMuIExvYWQgYGRpc3RgIGFzIHVucGFja2VkIHBhY2thZ2UuCjQuIEdvIHRvIHRoZSBDUk0gc2l0ZSB0byBjaGVjawoKIyMgTWFrZSB0aGUgZmVhdHVyZXMgd29ya3MKCkZvciBub3cgaXQgaXMganVzdCBhIHdpZGdldCwgeW91IGNhbiBjYWxsIHdpdGggaXQsIHRvIG1ha2UgYWxsIHRoZSBmZWF0dXJlcyB3b3JrLCBzdGlsbCBuZWVkIG1vcmUgZGV2ZWxvcGVyIHdvcmsuCgpUbyBtYWtlIGl0IGVhc2llciwgd2UgYWxyZWFkeSBzZXQgY29tbW9uIG1vZHVsZXMgdG8gcmVkdWNlIGRldmVsb3BlciBlZmZvcnRzLCB5b3UgY291bGQgc2V0IHByb3BlciBzZWxlY3RvcnMsIG1ldGhvZHMgdG8gbWFrZSBhbGwgZmVhdHVyZXMgdG8gd29yazoKCi0gRWRpdCBbc3JjL2Nocm9tZS1leHRlbnNpb24vY29uZmlnLmpzXShzcmMvY2hyb21lLWV4dGVuc2lvbi9jb25maWcuanMpIHRvIG1ha2UgY2xpY2stdG8tY2FsbCByZWxhdGVkIGZlYXR1cmVzIHRvIHdvcmsKLSBGb2xsb3cgdGhlIGd1aWRlIGluIFtzcmMvY2hyb21lLWV4dGVuc2lvbi9mZWF0dXJlcy90aGlyZC1wYXJ0eS1hcGkuanNdKHNyYy9jaHJvbWUtZXh0ZW5zaW9uL2ZlYXR1cmVzL3RoaXJkLXBhcnR5LWFwaS5qcykgdG8gbWFrZSBhbGwgdGhpcmQgcGFydHkgZmVhdHVyZXMgdG8gd29yay4KLSBGdXJ0aGVyIG1vcmUgeW91IGNhbiBlZGl0IFtkaXN0L21hbmlmZXN0Lmpzb25dKGRpc3QvbWFuaWZlc3QuanNvbikgYW5kIFtkaXN0L2JhY2tncm91bmQuanNdKGRpc3QvYmFja2dyb3VuZC5qcykgdG8gZG8gbW9yZSBjdXN0b21pemF0aW9uIHdvcmsuCi0gQW5kIHlvdSBjYW4gYWx3YXlzIHJlYWQgW1JlYWx3b3JsZCBjb2RlIGV4YW1wbGVzXSgjcmVhbHdvcmxkLWNvZGUtZXhhbXBsZXMpIHRvIGdldCBzb21lIGhpbnQgYWJvdXQgaG93IHRvIGRvIGl0LgoKIyMgQnVpbGQgd2l0aCBjdXN0b20gUmluZ0NlbnRyYWwgY2xpZW50SUQvYXBwU2VydmVyCgotIENyZWF0ZSBhbiBhcHAgZnJvbSBbaHR0cHM6Ly9kZXZlbG9wZXIucmluZ2NlbnRyYWwuY29tL10oaHR0cHM6Ly9kZXZlbG9wZXIucmluZ2NlbnRyYWwuY29tLyksIG1ha2Ugc3VyZSB5b3UgY2hvb3NlIGEgYnJvd3NlciBiYXNlZCBhcHAsIGFuZCBzZXQgYWxsIHBlcm1pc3Npb25zLCBhbmQgYWRkIGBodHRwczovL3JpbmdjZW50cmFsLmdpdGh1Yi5pby9yaW5nY2VudHJhbC1lbWJlZGRhYmxlL3JlZGlyZWN0Lmh0bWxgIHRvIHlvdXIgcmVkaXJlY3QgVVJJIGxpc3QsIEVkaXQgYGNvbmZpZy5qc2AuCgotIEZpbGwgeW91ciBSaW5nQ2VudHJhbCBhcHAncyBjbGllbnRJRCBhbmQgYXBwU2VydmVyIGluIGBjb25maWcuanNgLgoKYGBganMKCiAgcmluZ0NlbnRyYWxDb25maWdzOiB7CiAgICAvLyB5b3VyIHJpbmdDZW50cmFsIGFwcCdzIENsaWVudCBJRAogICAgY2xpZW50SUQ6ICd5b3VyLWNsaWVudElEJywKCiAgICAvLyB5b3VyIHJpbmdDZW50cmFsIGFwcCdzIEF1dGggU2VydmVyIFVSTAogICAgYXBwU2VydmVyOiAneW91ciByaW5nQ2VudHJhbCBhcHAgQXV0aCBTZXJ2ZXIgVVJMJwogIH0sCmBgYAoKIyMgQ3JlZGl0cwoKQ3JlYXRlZCB3aXRoIFtFbWJibnV4IEppXShodHRwczovL2dpdGh1Yi5jb20vZW1iYm51eCkncyB0dXR1cmlhbDoKIFtCdWlsZGluZyBDaHJvbWUgRXh0ZW5zaW9uIEludGVncmF0aW9ucyB3aXRoIFJpbmdDZW50cmFsIEVtYmVkZGFibGVdKGh0dHBzOi8vbWVkaXVtLmNvbS9yaW5nY2VudHJhbC1kZXZlbG9wZXJzL2J1aWxkLWEtY2hyb21lLWV4dGVuc2lvbi13aXRoLXJpbmdjZW50cmFsLWVtYmVkZGFibGUtYmI2ZmFlZTgwOGEzKQoKIyMgTGljZW5zZQoKTUlUCg==</textarea>
 </div>
