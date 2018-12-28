@@ -108,7 +108,7 @@ script.
       # create local config file
       cp config.sample.js config.js
 
-      # edit config.js, set `thirdPartyConfigs.serviceName` to `pipedrive`
+      # edit config.js, set `thirdPartyConfigs.serviceName` to `Pipedrive`
 
       # let's build the extension
       npm start
@@ -125,7 +125,7 @@ script.
       3. Load `dist` as unpacked package.
       4. Go to the [pipedrive.com](https://www.pipedrive.com), login and check it.
 
-  .step(data-title='Add advanced features to extension', data-file='../README.md', data-highlight='91-100')
+  .step(data-title='Add advanced features to extension', data-file='../template/content.js', data-highlight='31-56')
     :markdown
       ## Add advanced features to extension
 
@@ -133,21 +133,21 @@ script.
 
       To make it easier, we already set common modules to reduce developer efforts, you could set proper selectors, methods to make all features to work:
 
-      - Edit `src/config.js` to make all features to work
-      - Further more you can edit [src/manifest.json](src/manifest.json) to do more customization work.
+      - Edit `src/content.js` to make all features to work
+      - Further more you can edit `src/manifest.json` and `src/background.js` to do more customization work.
       - And you can always read [Realworld code examples](https://github.com/ringcentral-tutorials/build-chrome-ringcentral-widgets-extension-for-crm#realworld-code-examples) to get some hint about how to do it.
 
       In the following chapters, you will learn how exactly to make it work. This tutorial will take [pipedrive.com](https://www.pipedrive.com) as target CRM site, they have a modern single page app site.
 
       Before continuing, please register an free account, login and add some contacts with proper email and real contact number.
 
-  .step(data-title='Convert phone number text to click-to-call link', data-file='../README.md', data-highlight='91-100')
+  .step(data-title='Convert phone number text to click-to-call link', data-file='../src/content.js', data-highlight='7-7')
     :markdown
       ## Convert phone number text to click-to-call link
 
       ![ ](https://github.com/ringcentral/ringcentral-embeddable-extension-factory/raw/master/screenshots/fac-1.png)
 
-      It is pretty simple, we just need to find proper css selector.
+      It is pretty simple, let's import config from `config.js`. we just need to find proper css selector.
 
       ![ ](images/numbers.png)
 
@@ -170,7 +170,7 @@ script.
       Then refresh extension in Chrome extension page, check in pipedrive.com's contact detail page.
 
 
-  .step(data-title='Add a click-to-call button in contact info page', data-file='../README.md', data-highlight='91-100')
+  .step(data-title='Add a click-to-call button in contact info page', data-file='../src/config.js', data-highlight='41-83')
     :markdown
       ## Add a click-to-call button in contact info page
 
@@ -185,17 +185,19 @@ script.
 
       Then refresh extension in Chrome extension page, check in pipedrive.com's contact detail page.
 
-  .step(data-title='Practice: Add hover-to-show tooltip to show click-to-call button', data-file='../README.md', data-highlight='91-100')
+  .step(data-title='Practice: Add hover-to-show tooltip to show click-to-call button', data-file='../src/config.js', data-highlight='86-115')
     :markdown
       ## Practice: Add hover-to-show tooltip to show click-to-call button
 
+      ![cc](https://github.com/ringcentral/ringcentral-embeddable-extension-factory/raw/master/screenshots/fac-2.png)
+
       If you get a sense of how the config works, now it is time to try it yourself.
 
-      Edit `src/chrome-extension/config.js` `hoverShowClickToCallButton` function to make this feature work.
+      Edit `src/config.js` `hoverShowClickToCallButton` function to make this feature work.
 
       Think about your solution and compare with [source code](https://github.com/zxdong262/pipedrive-embeddable-ringcentral-phone-spa/commit/2ae121c266a44d555464080dd2e097ac7b59c7b6)
 
-  .step(data-title='Add third party features', data-file='../README.md', data-highlight='91-100')
+  .step(data-title='Add third party features', data-file='../src/config.js', data-highlight='133-281')
     :markdown
       ## Add third party features
 
@@ -207,9 +209,11 @@ script.
 
       In next chapter we will talk about authorization and sync contacts to RingCentral widgets.
 
-  .step(data-title='Add third party features: authorization and contacts', data-file='../README.md', data-highlight='91-100')
+  .step(data-title='Add third party features: authorization and contacts', data-file='../src/config.js', data-highlight='18-24')
     :markdown
       ## Add third party features: authorization and contacts
+
+      ![ ](https://github.com/zxdong262/insightly-embeddable-ringcentral-phone/raw/master/screenshots/insightly-4.png)
 
       It is a common practice that getting user authorization before accessing user data.
 
@@ -227,17 +231,17 @@ script.
 
       ![ ](images/contacts.png)
 
-  .step(data-title='Practice: The other third party features', data-file='../README.md', data-highlight='91-100')
+  .step(data-title='Practice: The other third party features', data-file='../src/config.js', data-highlight='133-281')
     :markdown
       ## Practice: The other third party features
 
       Since contacts and authorization are done, we will leave you to finish the Syncing call log and showing contact activities features as a practice.
 
-  .step(data-title='Practice: Additional settings', data-file='../README.md', data-highlight='91-100')
+  .step(data-title='Practice: Additional settings', data-file='../src/background.js', data-highlight='1-17')
     :markdown
       ## Practice: Additional settings
 
-      Further more you can edit `src/manifest.json` to do more customization work, such as filtered urls you do not want to show widgets etc.
+      Further more you can edit `src/manifest.json` and `src/background.js` to do more customization work, such as filtered urls you do not want to show widgets etc.
 
       That is all, thanks for reading!
 
