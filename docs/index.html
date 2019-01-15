@@ -56,19 +56,19 @@ To get started, click the &quot;Start Tutorial&quot; button below.</p><a href="#
 <ul>
 <li>Sync CRM contacts to our widgets after user authorize.</li>
 </ul>
-<p><img src="https://github.com/zxdong262/insightly-embeddable-ringcentral-phone/raw/master/screenshots/insightly-4.png" alt=" "></p>
+<p><img src="https://github.com/ringcentral/insightly-embeddable-ringcentral-phone/raw/master/screenshots/insightly-4.png" alt=" "></p>
 <ul>
 <li>Sync call log to CRM automatically or manually.</li>
 </ul>
-<p><img src="https://github.com/zxdong262/hubspot-embeddable-ringcentral-phone/raw/master/screenshots/hs6.png" alt=" "></p>
+<p><img src="https://github.com/ringcentral/hubspot-embeddable-ringcentral-phone/raw/master/screenshots/hs6.png" alt=" "></p>
 <ul>
 <li>Check CRM contact activities from our widgets.</li>
 </ul>
-<p><img src="https://github.com/zxdong262/hubspot-embeddable-ringcentral-phone/raw/master/screenshots/hs7.png" alt=" "></p>
+<p><img src="https://github.com/ringcentral/hubspot-embeddable-ringcentral-phone/raw/master/screenshots/hs7.png" alt=" "></p>
 <ul>
 <li>Show CRM contact info panel when inbound/outbound call with CRM contact.</li>
 </ul>
-<p><img src="https://github.com/zxdong262/hubspot-embeddable-ringcentral-phone/raw/master/screenshots/hubspot1.png" alt=" "></p>
+<p><img src="https://github.com/ringcentral/hubspot-embeddable-ringcentral-phone/raw/master/screenshots/hubspot1.png" alt=" "></p>
 <h2 id="demo-video-insightly-">Demo video(Insightly)</h2>
 <p><a href="https://youtu.be/Qfje5d5OdK0">https://youtu.be/Qfje5d5OdK0</a></p>
 </div><div data-title="Init extension project" data-file="../README.md" data-highlight="68-99" class="step"><h2 id="init-extension-project">Init extension project</h2>
@@ -139,26 +139,26 @@ npm start
 <p>And edit <code>src/config.js</code> <code>insertClickToCallButton</code> to be like this:</p>
 <p>As you can see, pipedrive contact page just have all phone numbers info in dom,
 so we can just extract them from dom, since the code is a bit long, please check this link to compare the code:</p>
-<p><a href="https://github.com/zxdong262/pipedrive-embeddable-ringcentral-phone-spa/commit/059e90c4cbbacc72c86437d8c16c43c30589b854">source code compare</a></p>
+<p><a href="https://github.com/ringcentral/pipedrive-embeddable-ringcentral-phone-spa/commit/059e90c4cbbacc72c86437d8c16c43c30589b854">source code compare</a></p>
 <p>Then refresh extension in Chrome extension page, check in pipedrive.com&#39;s contact detail page.</p>
 </div><div data-title="Practice: Add hover-to-show tooltip to show click-to-call button" data-file="../src/config.js" data-highlight="85-115" class="step"><h2 id="practice-add-hover-to-show-tooltip-to-show-click-to-call-button">Practice: Add hover-to-show tooltip to show click-to-call button</h2>
 <p><img src="https://github.com/ringcentral/ringcentral-embeddable-extension-factory/raw/master/screenshots/fac-2.png" alt="cc"></p>
 <p>If you get a sense of how the config works, now it is time to try it yourself.</p>
 <p>Edit <code>src/config.js</code> <code>hoverShowClickToCallButton</code> function to make this feature work.</p>
-<p>Think about your solution and compare with <a href="https://github.com/zxdong262/pipedrive-embeddable-ringcentral-phone-spa/commit/2ae121c266a44d555464080dd2e097ac7b59c7b6">source code</a></p>
+<p>Think about your solution and compare with <a href="https://github.com/ringcentral/pipedrive-embeddable-ringcentral-phone-spa/commit/2ae121c266a44d555464080dd2e097ac7b59c7b6">source code</a></p>
 </div><div data-title="Add third party features" data-file="../src/config.js" data-highlight="132-282" class="step"><h2 id="add-third-party-features">Add third party features</h2>
 <p>After the warn up, now it is time to try the third party features.</p>
 <p>Read our <a href="https://github.com/ringcentral/ringcentral-embeddable/blob/master/docs/third-party-service-in-widget.md">third party document</a> first.</p>
 <p>If you want to try yourself, you could do it by edit <code>src/config.js</code>&#39;s <code>thirdPartyServiceConfig</code> and <code>initThirdParty</code> function.</p>
 <p>In next chapter we will talk about authorization and sync contacts to RingCentral widgets.</p>
 </div><div data-title="Add third party features: authorization and contacts" data-file="../src/config.js" data-highlight="17-24" class="step"><h2 id="add-third-party-features-authorization-and-contacts">Add third party features: authorization and contacts</h2>
-<p><img src="https://github.com/zxdong262/insightly-embeddable-ringcentral-phone/raw/master/screenshots/insightly-4.png" alt=" "></p>
+<p><img src="https://github.com/ringcentral/insightly-embeddable-ringcentral-phone/raw/master/screenshots/insightly-4.png" alt=" "></p>
 <p>It is a common practice that getting user authorization before accessing user data.</p>
 <p>Since CRM site are so different, there is no common practice for this.</p>
 <p>In general, if you could access user data as logined user from browser, no special action needed.</p>
 <p>You may need to check network requests to find out how to get contacts list:</p>
 <p><img src="images/network.png" alt=" "></p>
-<p>So we can set proper method to get pipedrive&#39;s conatct list, check the <a href="https://github.com/zxdong262/pipedrive-embeddable-ringcentral-phone-spa/commit/de6d30091e2f5de9f032e3e83a117efa088ecf08">source code compare</a> to edit your code accordingly.</p>
+<p>So we can set proper method to get pipedrive&#39;s conatct list, check the <a href="https://github.com/ringcentral/pipedrive-embeddable-ringcentral-phone-spa/commit/de6d30091e2f5de9f032e3e83a117efa088ecf08">source code compare</a> to edit your code accordingly.</p>
 <p>After finish editing, refresh extension in Chrome extension page, check in pipedrive.com&#39;s contacts page, click contacts panel of RingCentral widgets, click auth button and try to call some contacts.</p>
 <p><img src="images/contacts.png" alt=" "></p>
 </div><div data-title="Practice: The other third party features" data-file="../src/config.js" data-highlight="132-281" class="step"><h2 id="practice-the-other-third-party-features">Practice: The other third party features</h2>
